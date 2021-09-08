@@ -15,7 +15,7 @@ public class Converter {
                 System.out.println(num * 1024 + " байт");
                 break;
             case 2:
-                System.out.println(num / 1024 + " килобайт");
+                System.out.println(num / 1024.0 + " килобайт");
                 break;
             default:
                 System.out.println("Неверное число!!!");
