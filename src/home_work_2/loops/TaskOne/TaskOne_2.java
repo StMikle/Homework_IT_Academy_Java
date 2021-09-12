@@ -17,15 +17,18 @@ public class TaskOne_2 {
 
         if (num < 0) {
             System.out.println("Введите положительное число !!!");
+            return;
         } else {
             fact = fact(num);
         }
-
-        // выводим для красоты полное вычисление факториала
+        // выводим полное вычисление факториала
         showInfo(num, fact);
     }
 
     public static void showInfo(long num, long fact) {
+        if (fact == -1) {
+            return;
+        }
         for (int i = 1; i <= num; i++) {
             if (i < num) {
                 System.out.print(i + " * ");
@@ -41,7 +44,12 @@ public class TaskOne_2 {
         if (num == 0 || num == 1) {
             return fact;
         }
-        fact = num * fact(num - 1);
+        try {
+            fact = Math.multiplyExact(num, fact(num - 1));
+        } catch (ArithmeticException e) {
+            System.out.println("Вышло за пределы long!!!");
+            return -1;
+        }
         return fact;
     }
 }
