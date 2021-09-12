@@ -6,7 +6,7 @@ package home_work_2.arrays;
 //        2.2.2. Вывести каждый второй элемент массива в консоль.
 //        2.2.3. Вывести все элементы массива в консоль в обратном порядке.
 
-import static home_work_2.arrays.TaskOne.ArraysUtils.arrayFromConsole;
+import static home_work_2.utils.ArraysUtils.arrayFromConsole;
 
 public class TaskTwo {
     public static void main(String[] args) {

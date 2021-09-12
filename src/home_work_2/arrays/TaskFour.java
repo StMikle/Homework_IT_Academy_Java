@@ -13,7 +13,7 @@ package home_work_2.arrays;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static home_work_2.arrays.TaskOne.ArraysUtils.arrayRandom;
+import static home_work_2.utils.ArraysUtils.arrayRandom;
 
 public class TaskFour {
     public static void main(String[] args) {

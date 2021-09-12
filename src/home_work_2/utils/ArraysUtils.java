@@ -1,4 +1,4 @@
-package home_work_2.arrays.TaskOne;
+package home_work_2.utils;
 
 import java.util.Arrays;
 import java.util.Random;

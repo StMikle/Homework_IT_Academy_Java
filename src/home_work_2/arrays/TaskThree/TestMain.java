@@ -1,6 +1,6 @@
 package home_work_2.arrays.TaskThree;
 
-import static home_work_2.arrays.TaskOne.ArraysUtils.arrayRandom;
+import static home_work_2.utils.ArraysUtils.arrayRandom;
 
 public class TestMain {
     public static void main(String[] args) {
