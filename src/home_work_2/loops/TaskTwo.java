@@ -12,19 +12,27 @@ public class TaskTwo {
     public static void main(String[] args) {
         String strNum = args[0];
         int num;
-        double numDoub;
+
+        // Проверка на правильность аргумента
         try {
-            num = Integer.parseInt(args[0]);
+            Double.parseDouble(args[0]);
+            try {
+                num = Integer.parseInt(args[0]);
+            } catch (NumberFormatException e) {
+                System.out.println("Введено не целое число");
+                return;
+            }
         } catch(NumberFormatException e) {
-            System.out.println("Введено не число !!!");
+            System.out.println("Введено не число");
             return;
         }
-        char arr[] = strNum.toCharArray();
+
+        char[] arr = strNum.toCharArray();          // Преобразуем наш аргумент в массив char-ов
         System.out.println(Arrays.toString(arr));
         long multi = 1;
         strNum = args[0];
         for (int i = 0; i < strNum.length(); i++) {
-            num = arr[i] - '0';
+            num = arr[i] - '0';                // преобразуем из char в int
             multi *= num;
             if (i == strNum.length() - 1) {
                 System.out.println(num + " = " + multi);
