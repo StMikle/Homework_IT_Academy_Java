@@ -14,9 +14,7 @@ public class SumOddPositive {
         System.out.println("Сгенерированные числа: ");
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (int) (Math.random() * 201) - 100; // диапазон [-100, 100]
-        }
-        for (int i: arr) {
-            System.out.print(i + " ");
+            System.out.println(arr[i] + " ");
         }
         System.out.println();
 
