@@ -11,45 +11,42 @@ public class SortsUtils {
 
 //      4.3.1. {1,2,3,4,5,6}
         int[] test = {1, 2, 3, 4, 5, 6};                                   // Исходный массив: [1, 2, 3, 4, 5, 6]
-        System.out.println("Исходный массив: " + Arrays.toString(test));   // Массив после сортировки пузырьком: [1, 2, 3, 4, 5, 6]
-        bubbleSort(test);                                                  // Массив после шейкерной сортировки: [1, 2, 3, 4, 5, 6]
-        test = new int[]{1, 2, 3, 4, 5, 6};
+        bubbleSort(test);                                                  // Массив после сортировки пузырьком: [1, 2, 3, 4, 5, 6]
+        test = new int[]{1, 2, 3, 4, 5, 6};                                // Массив после шейкерной сортировки: [1, 2, 3, 4, 5, 6]
         shakerSort(test);
 
 //      4.3.2. {1,1,1,1}
         test = new int[]{1, 1, 1, 1};                                      // Исходный массив: [1, 1, 1, 1]
-        System.out.println("Исходный массив: " + Arrays.toString(test));   // Массив после сортировки пузырьком: [1, 1, 1, 1]
-        bubbleSort(test);                                                  // Массив после шейкерной сортировки: [1, 1, 1, 1]
-        shakerSort(test);
+        bubbleSort(test);                                                  // Массив после сортировки пузырьком: [1, 1, 1, 1]
+        shakerSort(test);                                                  // Массив после шейкерной сортировки: [1, 1, 1, 1]
+
 
 //      4.3.3. {9,1,5,99,9,9}
         test = new int[]{9, 1, 5, 99, 9, 9};                               // Исходный массив: [9, 1, 5, 99, 9, 9]
-        System.out.println("Исходный массив: " + Arrays.toString(test));   // Массив после сортировки пузырьком: [1, 5, 9, 9, 9, 99]
-        bubbleSort(test);                                                  // Массив после шейкерной сортировки: [1, 5, 9, 9, 9, 99]
-        test = new int[]{9, 1, 5, 99, 9, 9};
+        bubbleSort(test);                                                  // Массив после сортировки пузырьком: [1, 5, 9, 9, 9, 99]
+        test = new int[]{9, 1, 5, 99, 9, 9};                               // Массив после шейкерной сортировки: [1, 5, 9, 9, 9, 99]
         shakerSort(test);
+
 //      4.3.4. {}
         test = new int[]{};                                                // Исходный массив: []
-        System.out.println("Исходный массив: " + Arrays.toString(test));   // Массив после сортировки пузырьком: []
-        bubbleSort(test);                                                  // Массив после шейкерной сортировки: []
-        shakerSort(test);
+        bubbleSort(test);                                                  // Массив после сортировки пузырьком: []
+        shakerSort(test);                                                  // Массив после шейкерной сортировки: []
+
 
 
         int[] container = arrayRandom(10, 100);
-        System.out.println("Исходный массив: " + Arrays.toString(container));
         bubbleSort(container);
 
         container = arrayRandom(15, 100);
-        System.out.println("\nИсходный массив: " + Arrays.toString(container));
         shakerSort(container);
 
         container = arrayFromConsole();
-        System.out.println("\nИсходный массив: " + Arrays.toString(container));
         shakerSort(container);
     }
 
     //  4.2.1. Пузырьковая сортировка
     public static void bubbleSort(int[] arr) {
+        System.out.println("Исходный массив: " + Arrays.toString(arr));
         int i, j, t;
         int size = arr.length;
 
@@ -69,6 +66,7 @@ public class SortsUtils {
 
     //  4.2.2. Шейкерная сортировка
     public static void shakerSort(int[] arr) {
+        System.out.println("Исходный массив: " + Arrays.toString(arr));
         int t;
         int leftLabel = 1;
         int rightLabel = arr.length - 1;

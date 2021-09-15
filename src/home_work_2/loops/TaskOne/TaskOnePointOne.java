@@ -5,7 +5,7 @@ package home_work_2.loops.TaskOne;
 //   Пример: Ввели 5, должно получиться в консоли: 1 * 2 * 3 * 4 * 5 = ответ
 //        1.1.1. Используя только цикл
 
-public class TaskOne_1 {
+public class TaskOnePointOne {
     public static void main(String[] args) {
         long num = 0;
         try {

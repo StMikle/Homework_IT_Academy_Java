@@ -5,7 +5,7 @@ package home_work_2.loops.TaskOne;
 // Пример: Ввели 5, должно получиться в консоли: 1 * 2 * 3 * 4 * 5 = ответ
 //        1.1.2.* Используя рекурсию
 
-public class TaskOne_2 {
+public class TaskOnePointTwo {
     public static void main(String[] args) {
         long fact = 1;
         long num = 0;
