@@ -15,7 +15,7 @@
 * #### 12 - SumNumArray (Сумма цифр массива)
 ## Tasks from txt file:
 ### 1. Loops - package loops
-* #### 1.1 - package loops.TaskOne  (1.1.1 - TaskOnePointOne  |  1.1.2 - TaskOnePointTwo)
+* #### 1.1 - package loops.taskOne  (1.1.1 - TaskOnePointOne  |  1.1.2 - TaskOnePointTwo)
 * #### 1.2 - TaskTwo
 * #### 1.3 - TaskThree
 * #### 1.4 - TaskFour
@@ -25,7 +25,7 @@
 * #### 2.1 - ArraysUtils
 ### package arrays 
 * #### 2.2 - TaskTwo
-* #### 2.3 - package TaskThree: (IArraysOperation, DoWhileOperation, WhileOperation, ForOperation, ForEachOperation, TestMain )          
+* #### 2.3 - package taskThree: (IArraysOperation, DoWhileOperation, WhileOperation, ForOperation, ForEachOperation, TestMain )          
 * #### 2.4 - TaskFour
 ### 3. Block diagram
 * #### package sorts.blockDiagram (Пузырьковая сортировка.drawio && Пузырьковая сортировка.svg)
