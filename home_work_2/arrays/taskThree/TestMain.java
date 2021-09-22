@@ -1,4 +1,4 @@
-package home_work_2.arrays.TaskThree;
+package home_work_2.arrays.taskThree;
 
 import static home_work_2.utils.ArraysUtils.arrayRandom;
 

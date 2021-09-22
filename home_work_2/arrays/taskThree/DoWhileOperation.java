@@ -1,4 +1,4 @@
-package home_work_2.arrays.TaskThree;
+package home_work_2.arrays.taskThree;
 
 //        2.2.1. Вывести все элементы в консоль.
 //        2.2.2. Вывести каждый второй элемент массива в консоль.

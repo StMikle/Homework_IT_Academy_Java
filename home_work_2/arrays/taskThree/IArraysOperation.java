@@ -1,4 +1,4 @@
-package home_work_2.arrays.TaskThree;
+package home_work_2.arrays.taskThree;
 
 public interface IArraysOperation {  // Методы объявленные в интерфейсе являются абстрактными (должны быть реализованы в классе),
     void output(int[] arr);          // а так же, методы, объявленные в интерфейсе, неявно считаются открытыми (public)

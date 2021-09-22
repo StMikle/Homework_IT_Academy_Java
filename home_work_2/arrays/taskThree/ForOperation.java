@@ -1,4 +1,4 @@
-package home_work_2.arrays.TaskThree;
+package home_work_2.arrays.taskThree;
 
 //2.3.3. ForOperation - во всех методах можно использовать только for
 

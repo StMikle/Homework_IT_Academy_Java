@@ -1,4 +1,4 @@
-package home_work_2.arrays.TaskThree;
+package home_work_2.arrays.taskThree;
 
 //2.3.4. ForEachOperation - во всех методах можно использовать только foreach
 

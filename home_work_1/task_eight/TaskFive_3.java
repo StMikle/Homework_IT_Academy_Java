@@ -2,15 +2,23 @@ package home_work_1.task_eight;
 
 public class TaskFive_3 implements ICommunicationPrinter {
     @Override
-    public String welcom(String name) {
+    public String welcome(String name) {
         String wait = "Я тебя так долго ждал";
-        switch (name) {
+        String answer = "";
+
+        switch ((name != null) ? name : "null") {
+            case "null":
+                answer = "Null!!!";
+                break;
             case "Вася":
-                return "Привет!\n" + wait;
+                answer = "Привет!\n" + wait;
+                break;
             case "Анастасия":
-                return wait;
+                answer = wait;
+                break;
             default:
-                return "Добрый день, а вы кто?";
+                answer = "Добрый день, а вы кто?";
         }
+        return answer;
     }
 }

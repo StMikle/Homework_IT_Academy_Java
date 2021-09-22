@@ -1,4 +1,4 @@
-package home_work_1;
+package home_work_1.presentation;
 
 public class OddNum {
     public static void main(String[] args) {
