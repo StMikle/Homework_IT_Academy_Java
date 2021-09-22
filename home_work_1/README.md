@@ -1,6 +1,7 @@
 # Homework №1
 ***
 ## Tasks from presentation:
+### package: presentation
 * #### 1 - OddNum
 * #### 2 - ThreeNum
 * #### 3 - DivNum
