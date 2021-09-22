@@ -2,22 +2,18 @@ package additional_home_works.tower_of_hanoi;
 
 import java.util.Random;
 
-import static project.Field.inputField;
-import static project.Field.showField;
-
-public class RobotMode implements project.Actions {
+public class RobotMode {
     public static void main(String[] args) {
         RobotMode robMode = new RobotMode();
-
+        Field fieldRobMode = new Field();
 
         System.out.println("\t\t\t\t\tПРАВИЛА ИГРЫ\n Даны три стержня, на один из которых нанизаны восемь колец,\n " +
                 "причём кольца отличаются размером и лежат меньшее на большем. Задача состоит в том,\n " +
                 "чтобы перенести пирамиду из восьми колец за наименьшее число ходов на другой стержень.\n " +
                 "За один раз разрешается переносить только одно кольцо, причём нельзя класть большее кольцо на меньшее.\n");
-        Field gameOne = new Field(robMode.choice());
-        inputField(gameOne.getField());
-        showField(gameOne.getField());
-        robMode.game(gameOne.getField());
+        fieldRobMode.setField(robMode.choice());
+        fieldRobMode.showField();
+        robMode.game(fieldRobMode);
     }
 
     public long move(int[][] field, int from, int to, long count) {
@@ -56,8 +52,9 @@ public class RobotMode implements project.Actions {
         return count;
     }
 
-    public void game(int[][] field) {
+    public void game(Field fieldRobMode) {
         Random rand = new Random();
+        int[][] field = fieldRobMode.getField();
         long count = 0l;
         int from, to;
         boolean win = false;
@@ -76,9 +73,9 @@ public class RobotMode implements project.Actions {
                 if (!(to > 0 && to < 4)) System.out.println("Сгенерируй уже наконец правильный номер стержня !!!\n");
                 else break;
             } while (true);
-            count = move(field, from, to, count);
-            showField(field);
-            if (field[0][1] == 1 || field[0][2] == 1) {
+            count = move(fieldRobMode.getField(), from, to, count);
+            fieldRobMode.showField();
+            if (field[0][2] == 1) {
                 System.out.println("\nЕхууу - Кампуктер выиграл !!!");
                 win = true;
             }

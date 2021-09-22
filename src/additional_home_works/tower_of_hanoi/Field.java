@@ -1,23 +1,17 @@
 package additional_home_works.tower_of_hanoi;
 
+import java.util.Scanner;
+
 public class Field {
     private int[][] field;
-
-    Field(int numRing) {
-        field = new int[numRing][3];
-    }
-
-    public void setField(int[][] field) {
-        this.field = field;
-    }
 
     public int[][] getField() {
         return field;
     }
 
-    // заполнение поля
-    static void inputField(int[][] field) {
-        for (int i = 0; i < field.length; i++) {
+    public void setField(int numRing) {
+        this.field = new int[numRing][3];
+        for (int i = 0; i < this.field.length; i++) {
             for (int j = 0; j < field[0].length; j++) {
                 if (j == 0) field[i][j] = i + 1;
                 else field[i][j] = 0;
@@ -26,19 +20,25 @@ public class Field {
     }
 
     // вывод поля
-    static void showField(int[][] arr) {
+     void showField() {
         System.out.println("\nВывод поля: ");
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
-                if (arr[i][j] == 0) System.out.print("*\t");
-                else System.out.print(arr[i][j] + "\t");
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field[0].length; j++) {
+                if (field[i][j] == 0) System.out.print("*\t");
+                else System.out.print(field[i][j] + "\t");
             }
             System.out.println();
         }
     }
 
-    static boolean chekInputFromTo(int direct) {
-        return direct > 0 && direct < 4;
+    public static boolean exp(boolean in, Scanner sc) {
+        if (in) {
+            return true;
+        } else {
+            System.out.println("Ввели не число!!!\n");
+            sc.next();
+            return false;
+        }
     }
 
     static boolean chekInput(int from, int to, int[][] field) {

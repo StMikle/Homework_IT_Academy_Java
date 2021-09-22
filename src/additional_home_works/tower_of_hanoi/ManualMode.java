@@ -2,32 +2,9 @@ package additional_home_works.tower_of_hanoi;
 
 import java.util.Scanner;
 
-import static project.Field.*;
+import static additional_home_works.tower_of_hanoi.Field.*;
 
-public class ManualMode implements project.Actions {
-    public static void main(String[] args) {
-        ManualMode manMode = new ManualMode();
-
-        System.out.println("\t\t\t\t\tПРАВИЛА ИГРЫ\n Даны три стержня, на один из которых нанизаны восемь колец,\n " +
-                "причём кольца отличаются размером и лежат меньшее на большем. Задача состоит в том,\n " +
-                "чтобы перенести пирамиду из восьми колец за наименьшее число ходов на другой стержень.\n " +
-                "За один раз разрешается переносить только одно кольцо, причём нельзя класть большее кольцо на меньшее.\n");
-        Field gameOne = new Field(manMode.choice());
-        inputField(gameOne.getField());
-        showField(gameOne.getField());
-        manMode.game(gameOne.getField());
-
-    }
-
-    public static boolean exp(boolean in, Scanner sc) {
-        if (in) {
-            return true;
-        } else {
-            System.out.println("Ввели не число!!!\n");
-            sc.next();
-            return false;
-        }
-    }
+public class ManualMode {
 
     public long move(int[][] field, int from, int to, long count) {
         int temp, indFrom = 0, indTo = 0;
@@ -58,26 +35,31 @@ public class ManualMode implements project.Actions {
     }
 
 
-    public void game(int[][] field) {
+    public void game(Field fieldManMod) {
         long count = 0l;
         Scanner sc = new Scanner(System.in);
         int from, to;
+        int[] fromTo = {};
         boolean win = false;
+        fieldManMod.setField(choice());
+        fieldManMod.showField();
+        int[][] field = fieldManMod.getField();
         while (!win) {
 
-            choiceFromTo(field);
-//            count = move(field, from, to, count);
-            showField(field);
-            if (field[0][1] == 1 || field[0][2] == 1) {
+            fromTo = choiceFromTo(fieldManMod);
+            move(field, fromTo[0], fromTo[1], count);
+            fieldManMod.showField();
+            if ( field[0][2] == 1) {
                 System.out.println("\nЕхууу - Вы выиграли !!!");
                 win = true;
             }
         }
     }
 
-    public void choiceFromTo(int[][] field) {
+    public int[] choiceFromTo(Field fieldManMod) {
         Scanner sc = new Scanner(System.in);
-        int from = 0, to = 0, count = 0;
+        int[] fromTo = new int[2];
+        int from, to, count = 0;
         boolean isFrom = false, answerFromField;
         do {
             System.out.println("\nВыберите откуда и куда хотите переместить кольцо (x -> y): ");
@@ -95,30 +77,22 @@ public class ManualMode implements project.Actions {
                 continue;
             }
 
-            answerFromField = chekInput(from, to, field);
+            answerFromField = chekInput(from, to, fieldManMod.getField());
             if (!answerFromField) {
                 continue;
             } else {
-                move(field, from, to, count);
+                fromTo[0] = from;
+                fromTo[1] = to;
                 break;
             }
         } while (true);
+        return fromTo;
     }
 
 
     public int choice() {
         Scanner sc = new Scanner(System.in);
-        int mode, numRing;
-        do {
-            System.out.println("Введите режим игры: 1 - ручной (пока только он), 2 - автоматический");
-            if (exp(sc.hasNextInt(), sc)) {
-                mode = sc.nextInt();
-                if (mode == 2) {
-                    System.out.println("Я же написал, пока только 1 -ый режим игры !!!");
-                } else if (!(mode > 0 && mode < 3)) System.out.println("Введите правильный режим игры !!!\n");
-                else break;
-            }
-        } while (true);
+        int numRing;
 
         do {
             System.out.println("Укажите количество колец с которыми вы будете играть. Минимальное - 3, максимальное - 8");
