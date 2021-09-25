@@ -11,7 +11,9 @@ package home_work_3.calcs.simple;
 //        В main методе требуется создать экземпляр калькулятора и используя методы из данного экземпляра посчитать выражения из задания 1.
 //        Вывести в консоль результат.
 
-public class CalculatorWithMathCopy {
+import home_work_3.calcs.api.ICalculator;
+
+public class CalculatorWithMathCopy implements ICalculator {
 
     /**
      * Метод делит одно число на другое и проверяет на деление на ноль
@@ -81,10 +83,9 @@ public class CalculatorWithMathCopy {
     /**
      * Метод вычисляет корень числа
      * @param num - число
-     * @param degree - степень корня
-     * @return возвращает корень n-й степени числа
+     * @return возвращает квадратный корень числа
      */
-    public double sqrt(double num, int degree) {
-        return Math.pow(num, 1.0 / degree);
+    public double sqrt(double num) {
+        return Math.sqrt(num);
     }
 }

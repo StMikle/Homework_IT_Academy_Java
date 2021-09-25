@@ -1,21 +1,21 @@
 package home_work_3.runners;
 
-//1.1 4.1 + 15 * 7 + (28 / 5) ^ 2. Вывести сохранённый результат в консоль.
-
-import home_work_3.calcs.additional.CalculatorWithCounterAutoComposite;
+import home_work_3.calcs.additional.CalculatorWithCounterAutoCompositeInterface;
+import home_work_3.calcs.api.ICalculator;
 import home_work_3.calcs.simple.CalculatorWithMathCopy;
 import home_work_3.calcs.simple.CalculatorWithMathExtends;
 import home_work_3.calcs.simple.CalculatorWithOperator;
 
-public class CalculatorWithCounterAutoCompositeMain {
+public class CalculatorWithCounterAutoCompositeInterfaceMain {
     public static void main(String[] args) {
-
         CalculatorWithOperator calculatorWithOperator = new CalculatorWithOperator();
-        CalculatorWithMathCopy calculatorWithMathCopy = new CalculatorWithMathCopy();
         CalculatorWithMathExtends calculatorWithMathExtends = new CalculatorWithMathExtends();
+        CalculatorWithMathCopy calculatorWithMathCopy = new CalculatorWithMathCopy();
+        ICalculator iCalculator;
 
         System.out.println("CalculatorWithOperator");
-        CalculatorWithCounterAutoComposite calc = new CalculatorWithCounterAutoComposite(calculatorWithOperator);
+        iCalculator = calculatorWithOperator;
+        CalculatorWithCounterAutoCompositeInterface calc = new CalculatorWithCounterAutoCompositeInterface(iCalculator);
         double result;
         double res1 = calc.mult(15, 7);  // 15 * 7
         double res2 = calc.div(28, 5); // (28 / 5)
@@ -26,7 +26,8 @@ public class CalculatorWithCounterAutoCompositeMain {
         System.out.println(calc.getCountOperation() + "\n");
 
         System.out.println("CalculatorWithMathCopy");
-        calc = new CalculatorWithCounterAutoComposite(calculatorWithMathCopy);
+        iCalculator = calculatorWithMathCopy;
+        calc = new CalculatorWithCounterAutoCompositeInterface(iCalculator);
         res1 = calc.mult(15, 7);  // 15 * 7
         res2 = calc.div(28, 5); // (28 / 5)
         res3 = calc.pow(res2, 2); // (28 / 5) ^ 2
@@ -36,7 +37,8 @@ public class CalculatorWithCounterAutoCompositeMain {
         System.out.println(calc.getCountOperation() + "\n");
 
         System.out.println("CalculatorWithMathExtends");
-        calc = new CalculatorWithCounterAutoComposite(calculatorWithMathExtends);
+        iCalculator = calculatorWithMathExtends;
+        calc = new CalculatorWithCounterAutoCompositeInterface(iCalculator);
         res1 = calc.mult(15, 7);  // 15 * 7
         res2 = calc.div(28, 5); // (28 / 5)
         res3 = calc.pow(res2, 2); // (28 / 5) ^ 2
@@ -44,6 +46,5 @@ public class CalculatorWithCounterAutoCompositeMain {
         result = calc.sum(res4, res3);
         System.out.println(result);
         System.out.println(calc.getCountOperation() + "\n");
-
     }
 }

@@ -13,7 +13,9 @@ package home_work_3.calcs.simple;
 //        В main методе требуется создать экземпляр калькулятора и используя методы из данного экземпляра посчитать выражения из задания 1.
 //        Вывести в консоль результат.
 
-public class CalculatorWithMathExtends extends CalculatorWithOperator {
+import home_work_3.calcs.api.ICalculator;
+
+public class CalculatorWithMathExtends extends CalculatorWithOperator implements ICalculator {
 
     /**
      * Метод вычисляет модуль числа

@@ -14,7 +14,9 @@ package home_work_3.calcs.simple;
 //        Вывести в консоль результат.
 
 
-public class CalculatorWithOperator {
+import home_work_3.calcs.api.ICalculator;
+
+public class CalculatorWithOperator implements ICalculator {
 
     /**
      * Метод делит одно число на другое и проверяет на деление на ноль
