@@ -2,12 +2,25 @@ package home_work_3.calcs.additional;
 
 import home_work_3.calcs.api.ICalculator;
 
-public class CalculatorWithCounterAutoCompositeInterface {
-
+public class CalculatorWithMemory {
     /**
      * поле для подсчёта количества операций
      */
     private long countOperation;
+    private double result;
+    private double tempResult;
+
+    public double getResult() {
+        double res = this.tempResult;
+        this.tempResult = 0;
+        this.result = 0;
+
+        return res;
+    }
+
+    public void setResult() {
+        this.tempResult = this.result;
+    }
 
     /**
      * поле типа ICalculator
@@ -18,7 +31,7 @@ public class CalculatorWithCounterAutoCompositeInterface {
      * Конструктор принимающий переменную типа ICalculator
      * @param iCalculator - переменная типа ICalculator
      */
-    public CalculatorWithCounterAutoCompositeInterface(ICalculator iCalculator) {
+    public CalculatorWithMemory(ICalculator iCalculator) {
         this.iCalculator = iCalculator;
     }
 
@@ -39,37 +52,43 @@ public class CalculatorWithCounterAutoCompositeInterface {
 
     public double div(double numerator, double denominator) {
         incrCountOperation();
-        return iCalculator.div(numerator, denominator);
+        this.result = iCalculator.div(numerator, denominator);
+        return this.result;
     }
 
     public double mult(double num1, double num2) {
         incrCountOperation();
-        return iCalculator.mult(num1, num2);
+        this.result = iCalculator.mult(num1, num2);
+        return this.result;
     }
 
     public double sqrt(double num) {
         incrCountOperation();
-        return iCalculator.sqrt(num);
+        this.result = iCalculator.sqrt(num);
+        return result;
     }
 
     public double abs(double num) {
         incrCountOperation();
-        return iCalculator.abs(num);
+        this.result = iCalculator.abs(num);
+        return this.result;
     }
 
     public double pow(double num1, int degree) {
         incrCountOperation();
-        return iCalculator.pow(num1, degree);
+        this.result = iCalculator.pow(num1, degree);
+        return this.result;
     }
 
     public double sub(double num1, double num2) {
         incrCountOperation();
-        return iCalculator.sub(num1, num2);
+        this.result = iCalculator.sub(num1, num2);
+        return this.result;
     }
 
     public double sum(double num1, double num2) {
         incrCountOperation();
-        return iCalculator.sum(num1, num2);
+        this.result = iCalculator.sum(num1, num2);
+        return this.result;
     }
-
 }
