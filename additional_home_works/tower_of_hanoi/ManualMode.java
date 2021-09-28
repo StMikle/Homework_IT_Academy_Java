@@ -41,7 +41,7 @@ public class ManualMode {
         int from, to;
         int[] fromTo = {};
         boolean win = false;
-        fieldManMod.setField(choice());
+        fieldManMod.setField(choice(fieldManMod));
         fieldManMod.showField();
         int[][] field = fieldManMod.getField();
         while (!win) {
@@ -49,7 +49,7 @@ public class ManualMode {
             fromTo = choiceFromTo(fieldManMod);
             move(field, fromTo[0], fromTo[1], count);
             fieldManMod.showField();
-            if ( field[0][2] == 1) {
+            if (field[0][2] == 1) {
                 System.out.println("\nЕхууу - Вы выиграли !!!");
                 win = true;
             }
@@ -63,15 +63,15 @@ public class ManualMode {
         boolean isFrom = false, answerFromField;
         do {
             System.out.println("\nВыберите откуда и куда хотите переместить кольцо (x -> y): ");
-            if (exp(sc.hasNextInt(), sc) && !isFrom) {
-                    from = sc.nextInt();
+            if (fieldManMod.exp(sc.hasNextInt(), sc) && !isFrom) {
+                from = sc.nextInt();
             } else {
                 isFrom = true;
                 continue;
             }
 
             System.out.print(from + " -> ");
-            if (exp(sc.hasNextInt(), sc)) {
+            if (fieldManMod.exp(sc.hasNextInt(), sc)) {
                 to = sc.nextInt();
             } else {
                 continue;
@@ -90,13 +90,13 @@ public class ManualMode {
     }
 
 
-    public int choice() {
+    public int choice(Field fieldManMod) {
         Scanner sc = new Scanner(System.in);
         int numRing;
 
         do {
             System.out.println("Укажите количество колец с которыми вы будете играть. Минимальное - 3, максимальное - 8");
-            if (exp(sc.hasNextInt(), sc)) {
+            if (fieldManMod.exp(sc.hasNextInt(), sc)) {
                 numRing = sc.nextInt();
                 if (!(numRing > 2 && numRing < 9)) {
                     System.out.println("Введите правильное количество колец !!!\n");

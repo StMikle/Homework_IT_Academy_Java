@@ -12,41 +12,47 @@ public class CalculatorWithCounterAutoComposite {
     private long countOperation;
 
     /**
-     *
+     * поле типа CalculatorWithOperator
      */
-    private CalculatorWithOperator calculatorWithOperator;
+    private final CalculatorWithOperator calculatorWithOperator;
 
     /**
-     *
+     * поле типа CalculatorWithMathCopy
      */
-    private CalculatorWithMathCopy calculatorWithMathCopy;
+    private final CalculatorWithMathCopy calculatorWithMathCopy;
     /**
-     *
+     * поле типа CalculatorWithMathExtends
      */
-    private CalculatorWithMathExtends calculatorWithMathExtends;
+    private final CalculatorWithMathExtends calculatorWithMathExtends;
 
     /**
-     *
-     * @param calc
+     * конструктор принимающий объект типа CalculatorWithOperator
+     * @param calc - типа CalculatorWithOperator
      */
     public CalculatorWithCounterAutoComposite(CalculatorWithOperator calc) {
         this.calculatorWithOperator = calc;
+        this.calculatorWithMathCopy = null;
+        this.calculatorWithMathExtends = null;
     }
 
     /**
-     *
-     * @param calc
+     * конструктор принимающий объект типа CalculatorWithMathCopy
+     * @param calc - типа CalculatorWithMathCopy
      */
     public CalculatorWithCounterAutoComposite(CalculatorWithMathCopy calc) {
         this.calculatorWithMathCopy = calc;
+        this.calculatorWithOperator = null;
+        this.calculatorWithMathExtends = null;
     }
 
     /**
-     *
-     * @param calc
+     * конструктор принимающий объект типа CalculatorWithMathExtends
+     * @param calc - типа CalculatorWithMathExtends
      */
     public CalculatorWithCounterAutoComposite(CalculatorWithMathExtends calc) {
         this.calculatorWithMathExtends = calc;
+        this.calculatorWithMathCopy = null;
+        this.calculatorWithOperator = null;
     }
 
     public double div(double numerator, double denominator) {
@@ -129,7 +135,7 @@ public class CalculatorWithCounterAutoComposite {
     /**
      * Метод, который увеличивает значение поля countOperation
      */
-    public void incrCountOperation () {
+    private void incrCountOperation () {
         this.countOperation++;
     }
 

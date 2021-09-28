@@ -8,13 +8,11 @@ import home_work_3.calcs.simple.CalculatorWithOperator;
 
 public class CalculatorWithCounterAutoCompositeInterfaceMain {
     public static void main(String[] args) {
-        CalculatorWithOperator calculatorWithOperator = new CalculatorWithOperator();
-        CalculatorWithMathExtends calculatorWithMathExtends = new CalculatorWithMathExtends();
-        CalculatorWithMathCopy calculatorWithMathCopy = new CalculatorWithMathCopy();
+
         ICalculator iCalculator;
 
         System.out.println("CalculatorWithOperator");
-        iCalculator = calculatorWithOperator;
+        iCalculator = new CalculatorWithOperator();
         CalculatorWithCounterAutoCompositeInterface calc = new CalculatorWithCounterAutoCompositeInterface(iCalculator);
         double result;
         double res1 = calc.mult(15, 7);  // 15 * 7
@@ -26,7 +24,7 @@ public class CalculatorWithCounterAutoCompositeInterfaceMain {
         System.out.println(calc.getCountOperation() + "\n");
 
         System.out.println("CalculatorWithMathCopy");
-        iCalculator = calculatorWithMathCopy;
+        iCalculator = new CalculatorWithMathCopy();
         calc = new CalculatorWithCounterAutoCompositeInterface(iCalculator);
         res1 = calc.mult(15, 7);  // 15 * 7
         res2 = calc.div(28, 5); // (28 / 5)
@@ -37,7 +35,7 @@ public class CalculatorWithCounterAutoCompositeInterfaceMain {
         System.out.println(calc.getCountOperation() + "\n");
 
         System.out.println("CalculatorWithMathExtends");
-        iCalculator = calculatorWithMathExtends;
+        iCalculator = new CalculatorWithMathExtends();
         calc = new CalculatorWithCounterAutoCompositeInterface(iCalculator);
         res1 = calc.mult(15, 7);  // 15 * 7
         res2 = calc.div(28, 5); // (28 / 5)

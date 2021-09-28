@@ -4,7 +4,7 @@ import home_work_3.calcs.api.ICalculator;
 
 public class CalculatorWithCounterAutoDecorator implements ICalculator {
 
-    private ICalculator iCalculator;
+    private final ICalculator iCalculator;
     private long countOperation;
 
     public CalculatorWithCounterAutoDecorator(ICalculator iCalculator) {
@@ -18,7 +18,7 @@ public class CalculatorWithCounterAutoDecorator implements ICalculator {
     /**
      * Метод, который увеличивает значение поля countOperation
      */
-    public void incrCountOperation () {
+    private void incrCountOperation () {
         this.countOperation++;
     }
 

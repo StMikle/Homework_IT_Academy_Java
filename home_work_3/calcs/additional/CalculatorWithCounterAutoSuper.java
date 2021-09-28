@@ -12,7 +12,7 @@ public class CalculatorWithCounterAutoSuper extends CalculatorWithMathExtends {
     /**
      * Метод, который увеличивает значение поля countOperation
      */
-    public void incrCountOperation () {
+    private void incrCountOperation () {
         this.countOperation++;
     }
 

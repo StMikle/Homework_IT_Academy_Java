@@ -10,13 +10,10 @@ import home_work_3.calcs.simple.CalculatorWithOperator;
 
 public class CalculatorWithMemoryMain {
     public static void main(String[] args) {
-        CalculatorWithOperator calculatorWithOperator = new CalculatorWithOperator();
-        CalculatorWithMathExtends calculatorWithMathExtends = new CalculatorWithMathExtends();
-        CalculatorWithMathCopy calculatorWithMathCopy = new CalculatorWithMathCopy();
         ICalculator iCalculator;
 
         System.out.println("CalculatorWithOperator");
-        iCalculator = calculatorWithOperator;
+        iCalculator = new CalculatorWithOperator();
         CalculatorWithMemory calc = new CalculatorWithMemory(iCalculator);
         calc.div(28, 5); // (28 / 5)
         calc.setResult();
@@ -30,7 +27,7 @@ public class CalculatorWithMemoryMain {
         System.out.println(calc.getCountOperation() + "\n");
 
         System.out.println("CalculatorWithMathCopy");
-        iCalculator = calculatorWithMathCopy;
+        iCalculator = new CalculatorWithMathCopy();
         calc = new CalculatorWithMemory(iCalculator);
         calc.div(28, 5); // (28 / 5)
         calc.setResult();
@@ -44,7 +41,7 @@ public class CalculatorWithMemoryMain {
         System.out.println(calc.getCountOperation() + "\n");
 
         System.out.println("CalculatorWithMathExtends");
-        iCalculator = calculatorWithMathExtends;
+        iCalculator = new CalculatorWithMathExtends();
         calc = new CalculatorWithMemory(iCalculator);
         calc.div(28, 5); // (28 / 5)
         calc.setResult();

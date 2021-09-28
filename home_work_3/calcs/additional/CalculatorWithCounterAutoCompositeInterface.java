@@ -25,7 +25,7 @@ public class CalculatorWithCounterAutoCompositeInterface {
     /**
      * Метод, который увеличивает значение поля countOperation
      */
-    public void incrCountOperation () {
+    private void incrCountOperation () {
         this.countOperation++;
     }
 

@@ -31,7 +31,7 @@ public class Field {
         }
     }
 
-    public static boolean exp(boolean in, Scanner sc) {
+    public boolean exp(boolean in, Scanner sc) {
         if (in) {
             return true;
         } else {
