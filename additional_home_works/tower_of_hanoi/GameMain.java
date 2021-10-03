@@ -10,6 +10,9 @@ public class GameMain {
         if (mode == 1) {
             ManualMode manualMode = new ManualMode();
             manualMode.startManualMode(menu, numRings);
+        } else if (mode == 2) {
+            RobotMode robotMode = new RobotMode();
+            robotMode.startRobotMode(menu, numRings);
         }
     }
 }

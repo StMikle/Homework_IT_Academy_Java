@@ -48,7 +48,6 @@ public class Field {
             }
             System.out.println();
         }
-         System.out.println();
     }
 
     // начало игры
@@ -97,7 +96,7 @@ public class Field {
         field[indTo][to - 1] = temp;
     }
 
-    static boolean chekInput(int from, int to, int[][] field) {
+    public boolean chekInput(int from, int to) {
         if (!(from > 0 && from < 4)) {
             System.out.println("\nВведите правильный номер стержня c которого вы хотите переместить кольцо !!!\n");
             return false;
@@ -126,11 +125,14 @@ public class Field {
             }
         }
 
-        if (field[indFrom][from - 1] == 0) {
-            System.out.println("\nВы выбрали номер стержня, на котором нет колец !!!");
+        if (from == to) {
+            System.out.println(" - Два одинаковых номера стержня !!!");
+            return false;
+        } else if (field[indFrom][from - 1] == 0) {
+            System.out.println(" - Номер стержня, на котором нет колец !!!");
             return false;
         } else if (!(field[field.length - 1][to - 1] == 0 || field[indFrom][from - 1] < field[indTo + 1][to - 1])) {
-            System.out.println("\nНевозможно переместить больший диск на меньший !!!");
+            System.out.println(" - Невозможно переместить больший диск на меньший !!!");
             return false;
         } else {
             return true;

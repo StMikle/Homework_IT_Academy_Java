@@ -1,8 +1,7 @@
 package additional_home_works.tower_of_hanoi;
 
+import java.util.Random;
 import java.util.Scanner;
-
-import static additional_home_works.tower_of_hanoi.Field.chekInput;
 
 public class Menu {
 
@@ -47,7 +46,7 @@ public class Menu {
         do {
 
             if (!isFrom) {
-                System.out.println("Выберите откуда хотите переместить кольцо (... -> y): ");
+                System.out.println("\nВыберите откуда хотите переместить кольцо (... -> y): ");
                 if (Field.exp(sc.hasNextInt(), sc)) {
                     from = sc.nextInt();
                     isFrom = true;
@@ -56,21 +55,44 @@ public class Menu {
                 }
             }
 
-            System.out.printf("\nВыберите куда хотите переместить кольцо (%d -> ...): ", from);
+            System.out.printf("\nВыберите куда хотите переместить кольцо (%d -> ...): \n", from);
             if (Field.exp(sc.hasNextInt(), sc)) {
                 to = sc.nextInt();
             } else {
                 continue;
             }
 
-            System.out.println(from + " -> " + to);
-            answerFromField = chekInput(from, to, field.getField());
+            System.out.print(from + " -> " + to);
+            answerFromField = field.chekInput(from, to);
             if (answerFromField) {
+                System.out.println();
                 fromTo[0] = from;
                 fromTo[1] = to;
                 break;
             } else {
                 isFrom = false;
+            }
+        } while (true);
+        return fromTo;
+    }
+
+    public int[] selectFromToRobotMode(Field field) {
+        Random rand = new Random();
+        int[] fromTo = new int[2];
+        int from, to;
+        boolean isFrom = false, answerFromField;
+        do {
+            from = rand.nextInt(3) + 1;
+            to = rand.nextInt(3) + 1;
+
+            System.out.print("\nХод: " + from + " -> " + to);
+
+            answerFromField = field.chekInput(from, to);
+            if (answerFromField) {
+                System.out.println();
+                fromTo[0] = from;
+                fromTo[1] = to;
+                break;
             }
         } while (true);
         return fromTo;
