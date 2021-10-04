@@ -28,12 +28,14 @@ public class DataContainerMain {
         System.out.println(text2); //Как дела
         System.out.println(text3); //Работаю
         System.out.println(text4); //Давай потом
+        System.out.println(container.toString());
         container.delete(text1);
         System.out.println(container.get(index1)); //Как дела
         System.out.println(container.toString());
         DataComparatorString dataComparatorString = new DataComparatorString();
         container.sort(dataComparatorString);
         System.out.println(container.toString());
+        System.out.println();
 
 //      Контейнер с объектами типа String
         DataContainer<Integer> integerDataContainer = new DataContainer<>(new Integer[0]);
@@ -44,8 +46,10 @@ public class DataContainerMain {
         System.out.println(integerDataContainer.toString());
         integerDataContainer.delete(Integer.valueOf(4));
         DataComparatorInteger dataComparatorInteger = new DataComparatorInteger();
-        integerDataContainer.sort(dataComparatorInteger);
+//        integerDataContainer.sort(dataComparatorInteger);
+        DataContainer.sort(integerDataContainer, dataComparatorInteger);
         System.out.println(integerDataContainer.toString());
+        System.out.println();
 
 
 //      Контейнер с объектами типа Student

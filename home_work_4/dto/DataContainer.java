@@ -84,6 +84,20 @@ public class DataContainer<T>{
         }
     }
 
+//    public static <T extends Comparable<T>> void sort(DataContainer<T> dataContainer) {
+//
+//        for (int i = 1; i < dataContainer.data.length; i++) {
+//            for (int j = dataContainer.data.length - 1; j >= i; j--) {
+//                if (dataContainer.getItems()[j - 1].compareTo(dataContainer.getItems()[j])> 0) {
+//                    T temp = dataContainer.getItems()[j - 1];
+//                    dataContainer.getItems()[j - 1] = dataContainer.getItems()[j];
+//                    dataContainer.getItems()[j] = temp;
+//                }
+//            }
+//        }
+//    }
+
+
 //  12.*
     public static <T> void sort(DataContainer<T> dataContainer, Comparator<T> comparator) {
 
