@@ -1,12 +1,7 @@
 package home_work_4.dto;
 
-import home_work_3.calcs.api.ICalculator;
-
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
 public class DataContainer<T>{
     private T[] data;

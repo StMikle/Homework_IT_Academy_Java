@@ -2,14 +2,9 @@ package home_work_4.dto;
 
 import java.util.Objects;
 
-public class Student implements Comparable<Student>{
+public class Student {
     private final int age;
     private final double score;
-
-    @Override
-    public int compareTo(Student student) {
-        return this.age - student.age;
-    }
 
     public Student(int age, double score) {
         this.age = age;
