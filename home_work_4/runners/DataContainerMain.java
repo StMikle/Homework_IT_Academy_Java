@@ -7,7 +7,6 @@ import home_work_4.comparators.StudentScoreComparator;
 import home_work_4.dto.DataContainer;
 import home_work_4.dto.Student;
 
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -46,6 +45,7 @@ public class DataContainerMain {
         System.out.println(integerDataContainer.toString());
         integerDataContainer.delete(Integer.valueOf(4));
         DataComparatorInteger dataComparatorInteger = new DataComparatorInteger();
+        DataContainer.sort(integerDataContainer);
 //        integerDataContainer.sort(dataComparatorInteger);
         DataContainer.sort(integerDataContainer, dataComparatorInteger);
         System.out.println(integerDataContainer.toString());

@@ -68,29 +68,19 @@ public class DataContainer<T>{
     }
 
     public void sort(Comparator<T> comparator) {
-        for (int i = 1; i < data.length; i++) {
-            for (int j = data.length - 1; j >= i; j--) {
-                if (comparator.compare(data[j - 1], data[j]) > 0) {
-                    T temp = data[j - 1];
-                    data[j - 1] = data[j];
-                    data[j] = temp;
-                }
-            }
-        }
+        sort(this, comparator);
     }
 
-//    public static <T extends Comparable<T>> void sort(DataContainer<T> dataContainer) {
-//
-//        for (int i = 1; i < dataContainer.data.length; i++) {
-//            for (int j = dataContainer.data.length - 1; j >= i; j--) {
-//                if (dataContainer.getItems()[j - 1].compareTo(dataContainer.getItems()[j])> 0) {
-//                    T temp = dataContainer.getItems()[j - 1];
-//                    dataContainer.getItems()[j - 1] = dataContainer.getItems()[j];
-//                    dataContainer.getItems()[j] = temp;
-//                }
-//            }
-//        }
-//    }
+    public static <T extends Comparable<T>> void sort(DataContainer<T> dataContainer) {
+        Comparator<T> comparator = new Comparator<T>() {
+            @Override
+            public int compare(T t, T t1) {
+                return t.compareTo(t1);
+            }
+        };
+
+        sort(dataContainer, comparator);
+    }
 
 
 //  12.*
@@ -98,10 +88,10 @@ public class DataContainer<T>{
 
         for (int i = 1; i < dataContainer.data.length; i++) {
             for (int j = dataContainer.data.length - 1; j >= i; j--) {
-                if (comparator.compare(dataContainer.getItems()[j - 1], dataContainer.getItems()[j]) > 0) {
-                    T temp = dataContainer.getItems()[j - 1];
-                    dataContainer.getItems()[j - 1] = dataContainer.getItems()[j];
-                    dataContainer.getItems()[j] = temp;
+                if (comparator.compare(dataContainer.data[j - 1], dataContainer.data[j]) > 0) {
+                    T temp = dataContainer.data[j - 1];
+                    dataContainer.data[j - 1] = dataContainer.data[j];
+                    dataContainer.data[j] = temp;
                 }
             }
         }
