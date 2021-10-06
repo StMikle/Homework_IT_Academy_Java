@@ -7,6 +7,7 @@ import home_work_4.comparators.StudentScoreComparator;
 import home_work_4.dto.DataContainer;
 import home_work_4.dto.Student;
 
+import java.util.Iterator;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -32,6 +33,7 @@ public class DataContainerMain {
         System.out.println(container.get(index1)); //Как дела
         System.out.println(container.toString());
         DataComparatorString dataComparatorString = new DataComparatorString();
+        System.out.println("После сортировки:");
         container.sort(dataComparatorString);
         System.out.println(container.toString());
         System.out.println();
@@ -46,8 +48,7 @@ public class DataContainerMain {
         integerDataContainer.delete(Integer.valueOf(4));
         DataComparatorInteger dataComparatorInteger = new DataComparatorInteger();
         DataContainer.sort(integerDataContainer);
-//        integerDataContainer.sort(dataComparatorInteger);
-        DataContainer.sort(integerDataContainer, dataComparatorInteger);
+//        DataContainer.sort(integerDataContainer, dataComparatorInteger);
         System.out.println(integerDataContainer.toString());
         System.out.println();
 
@@ -60,7 +61,22 @@ public class DataContainerMain {
         StudentScoreComparator studentScoreComparator = new StudentScoreComparator();
         // Сортировка по значимости (в начале по возрасту, если он одинаковый, то по баллу)
         studentDataContainer.sort(studentAgeComparator.thenComparing(studentScoreComparator));
+        System.out.println("\nПосле сортировки:\n");
         System.out.println(studentDataContainer.toString());
+
+        System.out.println("\nИспользование итератора:\n");
+        Iterator<Student> iterOne = studentDataContainer.iterator();
+        while(iterOne.hasNext()){
+            System.out.println(iterOne.next());
+        }
+
+        System.out.println("Использование итератора для удаление объектов\n");
+        Iterator<Student> iterTwo = studentDataContainer.iterator();
+        while(iterTwo.hasNext()){
+            iterTwo.remove();
+        }
+        System.out.println(studentDataContainer.toString());
+
     }
 
     public static Student[] createStudents() {

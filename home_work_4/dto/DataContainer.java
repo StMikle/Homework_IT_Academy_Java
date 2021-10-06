@@ -2,12 +2,36 @@ package home_work_4.dto;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Iterator;
 
-public class DataContainer<T>{
+public class DataContainer<T> implements Iterable<T> {
+
     private T[] data;
 
     public DataContainer(T[] data) {
         this.data = data;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private int count = 0;
+            @Override
+            public boolean hasNext() {
+                return count < data.length;
+            }
+
+            @Override
+            public T next() {
+                return data[count++];
+            }
+
+            @Override
+            public void remove() {
+                delete(data[count]);
+//                throw new UnsupportedOperationException("remove");
+            }
+        };
     }
 
     public int add(T item) {
@@ -71,6 +95,7 @@ public class DataContainer<T>{
         sort(this, comparator);
     }
 
+// 11.*
     public static <T extends Comparable<T>> void sort(DataContainer<T> dataContainer) {
         Comparator<T> comparator = new Comparator<T>() {
             @Override
@@ -81,7 +106,6 @@ public class DataContainer<T>{
 
         sort(dataContainer, comparator);
     }
-
 
 //  12.*
     public static <T> void sort(DataContainer<T> dataContainer, Comparator<T> comparator) {
