@@ -60,14 +60,14 @@ public class DataContainerMain {
         StudentAgeComparator studentAgeComparator = new StudentAgeComparator();
         StudentScoreComparator studentScoreComparator = new StudentScoreComparator();
         // Сортировка по значимости (в начале по возрасту, если он одинаковый, то по баллу)
-        studentDataContainer.sort(studentAgeComparator.thenComparing(studentScoreComparator));
+//        studentDataContainer.sort(studentAgeComparator.thenComparing(studentScoreComparator));
+        DataContainer.sort(studentDataContainer); // Сортировка с помощью метода sort c Comparable
         System.out.println("\nПосле сортировки:\n");
         System.out.println(studentDataContainer.toString());
 
         System.out.println("\nИспользование итератора:\n");
-        Iterator<Student> iterOne = studentDataContainer.iterator();
-        while(iterOne.hasNext()){
-            System.out.println(iterOne.next());
+        for (Student student : studentDataContainer) {
+            System.out.println(student);
         }
 
         System.out.println("Использование итератора для удаление объектов\n");

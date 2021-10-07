@@ -2,7 +2,7 @@ package home_work_4.dto;
 
 import java.util.Objects;
 
-public class Student {
+public class Student implements Comparable<Student>{
     private final int age;
     private final double score;
 
@@ -38,5 +38,10 @@ public class Student {
                 "age = " + age +
                 ", score = " + score +
                 '}' + "\n";
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return this.age - o.age;
     }
 }

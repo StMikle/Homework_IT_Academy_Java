@@ -3,19 +3,24 @@ package home_work_4.dto;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Objects;
 
 public class DataContainer<T> implements Iterable<T> {
 
     private T[] data;
 
     public DataContainer(T[] data) {
-        this.data = data;
+        if (data == null) {
+            throw new IllegalArgumentException("Ошибка, надо передать массив");
+        }
+        this.data = Arrays.copyOf(data, data.length);
     }
 
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             private int count = 0;
+
             @Override
             public boolean hasNext() {
                 return count < data.length;
@@ -34,9 +39,16 @@ public class DataContainer<T> implements Iterable<T> {
         };
     }
 
+    /**
+     * Добавляет данные в хранилище,
+     * переданный элемент сохраняется в конец хранилища
+     * @param item элемент для сохранения
+     * @return -1 - если данный элемент вставлять нельзя
+     *          0 и больше - если элемент был вставлен,
+     *          возвращаемое число обозначает индекс на который был вставлен элемент
+     */
     public int add(T item) {
-
-        if (item == null) {
+        if (!isEmpty()) {
             return -1;
         } else {
             for (int i = 0; i < data.length; i++) {
@@ -53,27 +65,41 @@ public class DataContainer<T> implements Iterable<T> {
         }
     }
 
+    /**
+     * Данный метод возвращает данные хранимые в контейнере
+     * @param index индекс элемента
+     * @return null - если элемент не найден
+     */
     public T get(int index) {
-        try {
+        if (isEmpty()) {
             return data[index];
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } else {
             return null;
         }
     }
 
+    /**
+     * Получить содержимое контейнера
+     * @return копия контейнера
+     */
     T[] getItems() {
-        return data;
+        return Arrays.copyOf(data, data.length);
     }
 
+    /**
+     * Удалить элемент из контейнера по индексу
+     * @param index индекс элемента
+     * @return true - если удалили
+     *          false - если не удалили
+     */
     public boolean delete(int index) {
-
-        if (data == null) {
+        if (!isEmpty()) {
             return false;
-        } else if (index < data.length && index > -1) {
+        }
+
+        if (!isIndexOutOfBound(index)) {
             for (int i = index + 1; i < data.length; i++) {
-                T temp = data[i - 1];
                 data[i - 1] = data[i];
-                data[i] = temp;
             }
             data = Arrays.copyOf(data, data.length - 1);
             return true;
@@ -82,9 +108,15 @@ public class DataContainer<T> implements Iterable<T> {
         }
     }
 
+    /**
+     * Удаляет первый найденный элемент в контейнере эквивалентный переданному
+     * @param item переданный элемент
+     * @return true - если удалили
+     *          false - если не удалили
+     */
     public boolean delete(T item) {
         for (int i = 0; i < data.length; i++) {
-            if (data[i].equals(item)) {
+            if (Objects.equals(data[i], item)) {
                 return delete(i);
             }
         }
@@ -95,7 +127,13 @@ public class DataContainer<T> implements Iterable<T> {
         sort(this, comparator);
     }
 
-// 11.*
+    // 11.*
+
+    /**
+     * Сортирует переданный контейнер
+     * @param dataContainer переданный контейнер
+     * @param <T> тип контейнера
+     */
     public static <T extends Comparable<T>> void sort(DataContainer<T> dataContainer) {
         Comparator<T> comparator = new Comparator<T>() {
             @Override
@@ -107,7 +145,14 @@ public class DataContainer<T> implements Iterable<T> {
         sort(dataContainer, comparator);
     }
 
-//  12.*
+    //  12.*
+
+    /**
+     * Сортирует переданный контейнер
+     * @param dataContainer переданный контейнер
+     * @param comparator класс компаратор
+     * @param <T> тип контейнера
+     */
     public static <T> void sort(DataContainer<T> dataContainer, Comparator<T> comparator) {
 
         for (int i = 1; i < dataContainer.data.length; i++) {
@@ -124,15 +169,34 @@ public class DataContainer<T> implements Iterable<T> {
 
     @Override
     public String toString() {
-        String str = "data: [";
+        StringBuilder str = new StringBuilder("DataContainer: [");
         for (int i = 0; i < data.length; i++) {
             if (data[i] != null) {
-                str += data[i];
+                str.append(data[i]);
                 if (i < data.length - 1) {
-                    str += ", ";
+                    str.append(", ");
                 }
             }
         }
         return str + "]";
+    }
+
+    /**
+     * Проверка на попадание индекса в размер контейнера
+     * @param index индекс элемента
+     * @return true - если не попал
+     *          false - если попал
+     */
+    private boolean isIndexOutOfBound(int index) {
+        return index >= data.length || index < 0;
+    }
+
+    /**
+     * Проверка на пустоту контейнера
+     * @return true - если контейнер не пустой
+     *          false - если пустой
+     */
+    private boolean isEmpty() {
+        return data != null;
     }
 }
