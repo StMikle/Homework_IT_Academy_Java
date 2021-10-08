@@ -18,7 +18,7 @@ public class StudentMain {
         List<Student> listStudent = new ArrayList<>();
         List<String> listName = new ArrayList<>();
         TextFileDataSource data = new TextFileDataSource();
-        String fileAddress = "D://IT Academy (Java Core)//Projects//src//lessons//collections//classWork//files//Name.txt";
+        String fileAddress = "D://IT Academy (Java Core)//Projects//src//lessons//collections//classWork//files//Names.txt";
         data.loadData(fileAddress, listName);
         createStudents(listStudent, listName);
 
