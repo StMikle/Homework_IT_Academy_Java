@@ -7,6 +7,12 @@ import java.io.IOException;
 import java.util.List;
 
 public class TextFileDataSource {
+
+    /**
+     * Метод, который заполняет лист именами из файла
+     * @param filename - имя файла типа String
+     * @param data - переменная типа List<String> хранящая ссылку на объект типа ArrayList<String>
+     */
     public void loadData(String filename, List<String> data) {
         try (BufferedReader src = new BufferedReader(new FileReader(filename))) {
             String line;

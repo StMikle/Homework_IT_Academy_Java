@@ -1,6 +1,5 @@
 package home_work_5.runners;
 
-
 import home_work_5.comparators.StudentAgeComparator;
 import home_work_5.comparators.StudentNameComparator;
 import home_work_5.comparators.StudentScoreComparator;
@@ -18,7 +17,7 @@ public class StudentMain {
         List<Student> listStudent = new ArrayList<>();
         List<String> listName = new ArrayList<>();
         TextFileDataSource data = new TextFileDataSource();
-        String fileAddress = "D://IT Academy (Java Core)//Projects//src//lessons//collections//classWork//files//Names.txt";
+        String fileAddress = "./src/home_work_5/files/Names.txt";
         data.loadData(fileAddress, listName);
         createStudents(listStudent, listName);
 
@@ -101,6 +100,11 @@ public class StudentMain {
         }
     }
 
+    /**
+     * Метод, который спрашивает диапазон для значений полей класса Student и генерирует их
+     * @param listStudent - переменная типа List<String> хранящая ссылку на объект типа ArrayList<String>
+     * @param listName - переменная типа List<String> хранящая ссылку на объект типа ArrayList<String>
+     */
     public static void createStudents(List<Student> listStudent, List<String> listName) {
         int numStudents = 0;
         int ageFrom = 0;
@@ -120,22 +124,31 @@ public class StudentMain {
 
 
         for (int i = 0; i < numStudents; i++) {
-            int id = rnd.nextInt(0, Integer.MAX_VALUE);
             int age = rnd.nextInt(ageFrom, ageTo + 1);
             double averageScore = rnd.nextDouble(0, 10);
             boolean isOlimpiad = rnd.nextBoolean();
             String name = randomString(listName);
 
-            listStudent.add(new Student(id, name, age, averageScore, isOlimpiad));
+            listStudent.add(new Student(i + 1, name, age, averageScore, isOlimpiad));
         }
     }
 
+    /**
+     * Метод (generic), который выводит список переданную в параметр
+     * @param list - переменная типа List<String> хранящая ссылку на объект типа ArrayList<String>
+     * @param <T> - типа нашего листа
+     */
     public static <T> void outCollection(List<T> list) {
         for (T t : list) {
             System.out.println(t);
         }
     }
 
+    /**
+     * Метод, который возвращает рандомное по номеру имя из листа listName
+     * @param listName - переменная типа List<String> хранящая ссылку на объект типа ArrayList<String>
+     * @return рандомное по номеру имя из listName типа String
+     */
     public static String randomString(List<String> listName) {
         int listNameSize = listName.size();
         int num = rnd.nextInt(0, listNameSize);

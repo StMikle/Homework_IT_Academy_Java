@@ -55,6 +55,13 @@ public class CalculatorWithCounterAutoComposite {
         this.calculatorWithOperator = null;
     }
 
+    /**
+     * Метод, который возвращает результат выполнения метода div() класса Калькулятора переданного в конструктор
+     * Вызов метода по увеличению поля countOperation
+     * @param numerator - числитель типа double
+     * @param denominator - знаменатель типа double
+     * @return возвращает результат от деления типа double
+     */
     public double div(double numerator, double denominator) {
         incrCountOperation();
         if (calculatorWithOperator != null) {
@@ -66,6 +73,13 @@ public class CalculatorWithCounterAutoComposite {
         }
     }
 
+    /**
+     * Метод, который возвращает результат выполнения метода mult() класса Калькулятора переданного в конструктор
+     * Вызов метода по увеличению поля countOperation
+     * @param num1 - первое число типа double
+     * @param num2 - второе число типа double
+     * @return возвращает результат от умножения типа double
+     */
     public double mult(double num1, double num2) {
         incrCountOperation();
         if (calculatorWithOperator != null) {
@@ -77,6 +91,12 @@ public class CalculatorWithCounterAutoComposite {
         }
     }
 
+    /**
+     * Метод, который возвращает результат выполнения метода sqrt() класса Калькулятора переданного в конструктор
+     * Вызов метода по увеличению поля countOperation
+     * @param num число
+     * @return возвращает квадратный корень числа типа double
+     */
     public double sqrt(double num) {
         incrCountOperation();
         if (calculatorWithOperator != null) {
@@ -88,6 +108,12 @@ public class CalculatorWithCounterAutoComposite {
         }
     }
 
+    /**
+     * Метод, который возвращает результат выполнения метода abs() класса Калькулятора переданного в конструктор
+     * Вызов метода по увеличению поля countOperation
+     * @param num - число
+     * @return возвращает число по модулю типа double
+     */
     public double abs(double num) {
         incrCountOperation();
         if (calculatorWithOperator != null) {
@@ -99,6 +125,13 @@ public class CalculatorWithCounterAutoComposite {
         }
     }
 
+    /**
+     * Метод, который возвращает результат выполнения метода pow() класса Калькулятора переданного в конструктор
+     * Вызов метода по увеличению поля countOperation
+     * @param num1 - число
+     * @param degree - степень
+     * @return возвращает число возведённое в степень типа double
+     */
     public double pow(double num1, int degree) {
         incrCountOperation();
         if (calculatorWithOperator != null) {
@@ -110,6 +143,13 @@ public class CalculatorWithCounterAutoComposite {
         }
     }
 
+    /**
+     * Метод, который возвращает результат выполнения метода sub() класса Калькулятора переданного в конструктор
+     * Вызов метода по увеличению поля countOperation
+     * @param num1 - первое число типа double
+     * @param num2 - второе число типа double
+     * @return возвращает результат от вычитания типа double
+     */
     public double sub(double num1, double num2) {
         incrCountOperation();
         if (calculatorWithOperator != null) {
@@ -121,6 +161,13 @@ public class CalculatorWithCounterAutoComposite {
         }
     }
 
+    /**
+     * Метод, который возвращает результат выполнения метода sum() класса Калькулятора переданного в конструктор
+     * Вызов метода по увеличению поля countOperation
+     * @param num1 - первое число типа double
+     * @param num2 - второе число типа double
+     * @return возвращает результат от сложения типа double
+     */
     public double sum(double num1, double num2) {
         incrCountOperation();
         if (calculatorWithOperator != null) {
