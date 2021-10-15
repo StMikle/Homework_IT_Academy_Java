@@ -7,8 +7,15 @@ import java.util.Objects;
 
 public class DataContainer<T> implements Iterable<T> {
 
+    /**
+     * Поле дженерик типа T[]д
+     */
     private T[] data;
 
+    /**
+     * Конструктор класса
+     * @param data массив дженерик типа T[]
+     */
     public DataContainer(T[] data) {
         if (data == null) {
             throw new IllegalArgumentException("Ошибка, надо передать массив");
@@ -16,6 +23,10 @@ public class DataContainer<T> implements Iterable<T> {
         this.data = Arrays.copyOf(data, data.length);
     }
 
+    /**
+     * Переопределение метода iterator()
+     * @return интерфейс Iterator<T>
+     */
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
@@ -167,6 +178,10 @@ public class DataContainer<T> implements Iterable<T> {
 
     }
 
+    /**
+     * Переопределение метода toString()
+     * @return строку со всеми полями класса, переданного в DataContainer
+     */
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder("DataContainer: [");

@@ -79,6 +79,10 @@ public class DataContainerMain {
 
     }
 
+    /**
+     * Метод, который студентов с рандомным значением полей
+     * @return массив students типа Student[]
+     */
     public static Student[] createStudents() {
         Scanner scanner = new Scanner(System.in);
         ThreadLocalRandom rnd = ThreadLocalRandom.current();

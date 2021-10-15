@@ -4,11 +4,24 @@ import home_work_3.calcs.api.ICalculator;
 
 public class CalculatorWithMemory {
     /**
-     * поле для подсчёта количества операций
+     * Поле типа long для подсчёта количества операций
      */
     private long countOperation;
+
+    /**
+     * Поле типа double для хранения результата операций
+     */
     private double result;
+
+    /**
+     * Поле типа double для хранения промежуточного результата операций
+     */
     private double tempResult;
+
+    /**
+     * поле типа ICalculator
+     */
+    private final ICalculator iCalculator;
 
     /**
      * Метод (getter), который возвращает результат последнего выполнения метода математической операции из класса
@@ -29,11 +42,6 @@ public class CalculatorWithMemory {
     public void setResult() {
         this.tempResult = this.result;
     }
-
-    /**
-     * поле типа ICalculator
-     */
-    private final ICalculator iCalculator;
 
     /**
      * Конструктор принимающий переменную типа ICalculator
