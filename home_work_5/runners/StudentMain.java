@@ -50,6 +50,7 @@ public class StudentMain {
         StudentNameComparator studentNameComparator = new StudentNameComparator();
         StudentAgeComparator studentAgeComparator = new StudentAgeComparator();
         StudentScoreComparator studentScoreComparator = new StudentScoreComparator();
+        Comparator<Student> reversed = new StudentScoreComparator().reversed();
 
         int numTop = 0;
         boolean check;
@@ -67,19 +68,29 @@ public class StudentMain {
 
 
         System.out.println("\nСортировка по имени:\n");
+        int index = 0;
         listWithParameter.sort(studentNameComparator);
-        for (int i = 0; i < numTop; i++) {
-            System.out.println(listWithParameter.get(i));
+        for (Student student : listWithParameter) {
+            System.out.println(student);
+            index++;
+            if (index >= numTop) {
+                break;
+            }
         }
 
         System.out.println("\nСортировка по оценке:\n");
         listWithParameter.sort(studentScoreComparator);
-        for (int i = 0; i < numTop; i++) {
-            System.out.println(listWithParameter.get(i));
+        index = 0;
+        for (Student student : listWithParameter) {
+            System.out.println(student);
+            index++;
+            if (index >= numTop) {
+                break;
+            }
         }
 
         System.out.println("\nСортировка по возрасту и оценке:");
-        listWithParameter.sort(studentAgeComparator.thenComparing(studentScoreComparator));
+        listWithParameter.sort(studentAgeComparator.thenComparing(reversed));
         int age = listWithParameter.get(0).getAge();
         int count = 0;
         boolean chek = true;
