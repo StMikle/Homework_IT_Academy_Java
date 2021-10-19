@@ -91,23 +91,23 @@ public class StudentMain {
 
         System.out.println("\nСортировка по возрасту и оценке:");
         listWithParameter.sort(studentAgeComparator.thenComparing(reversed));
-        int age = listWithParameter.get(0).getAge();
-        int count = 0;
-        boolean chek = true;
-        for (int i = 0; age <= 100 && i < listWithParameter.size(); i++) {
-            if (listWithParameter.get(i).getAge() == age) {
-                if (chek) {
-                    System.out.println("\nВозраст: " + listWithParameter.get(i).getAge());
-                    chek = false;
-                }
-                System.out.println(listWithParameter.get(i));
-                count++;
+
+        index = 0;
+        int currentAge = -1;
+        for (Student student : listWithParameter) {
+            if(currentAge == -1 || currentAge != student.getAge()) {
+                index = 0;
+                currentAge = student.getAge();
+                System.out.println("\nВозраст: " + student.getAge());
             }
-            if (listWithParameter.get(i).getAge() > age || count == numTop) {
-                count = 0;
-                age++;
-                chek = true;
+
+            if (index >= numTop && currentAge == student.getAge()) {
+                continue;
             }
+
+            System.out.println(student);
+
+            index++;
         }
     }
 
