@@ -6,6 +6,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegExSearch implements ISearchEngine {
+
+    /**
+     * Реализация метода интерфейса, который ищет слово в обработанном тексте с помощью регулярного выражения
+     * @param text текст в котором ищем
+     * @param word слово, которое ищем
+     * @return количество повторений слова
+     */
     @Override
     public long search(String text, String word) {
         long count = 0;

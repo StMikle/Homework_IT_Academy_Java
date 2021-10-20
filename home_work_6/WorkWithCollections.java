@@ -25,11 +25,16 @@ public class WorkWithCollections {
 
     /**
      * Метод, который заполняет коллекцию реализующую интерфейс Set словами из массива str
-     * @param str массив слов типа String
+     * @param text массив слов типа String
      * @return объект типа HashSet<String> содержащий уникальные слова
      */
-    public Set<String> setWords(String str) {
-        Set<String> words = new HashSet<String>(List.of(str.split("  ")));
-        return words;
+    public Set<String> setWords(String text) {
+        return new HashSet<String>(List.of(text.split("  ")));
+    }
+
+    public String replacePunctuationChars(String text) {
+        String chars = "(\\.|,|:|;|\"|!|\\?|\\(|\\)|\n|\t|--|-\\s+|\\s+-|\\s+)";
+        text = text.replaceAll(chars, "  ").replaceAll("\\s{2,}", "  ");
+        return text;
     }
 }

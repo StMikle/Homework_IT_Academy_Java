@@ -4,7 +4,6 @@ import home_work_6.api.ISearchEngine;
 
 public class SearchEnginePunctuationNormalizer implements ISearchEngine {
 
-    private String clearText;
     /**
      * поле типа ISearchEngine
      */
@@ -18,7 +17,6 @@ public class SearchEnginePunctuationNormalizer implements ISearchEngine {
         this.iSearchEngine = iSearchEngine;
     }
 
-
     /**
      * Метод, который присваивает результат выполнения метода search()
      * класса Search переданного в конструктор полю result и возвращает значение этого поля
@@ -28,12 +26,20 @@ public class SearchEnginePunctuationNormalizer implements ISearchEngine {
      */
     @Override
     public long search(String text, String word) {
+        if (this.iSearchEngine instanceof EasySearch) {
+            return iSearchEngine.search(text, word);                            // проверка для того, чтобы он не использовал
+        }                                                                       // метод с регулярными выражениями в EasySearch
+
         return iSearchEngine.search(replacePunctuationChars(text), word);
     }
 
+    /**
+     * Метод, который заменяет все символы-разделители и нежелательные символы в тексте двумя пробелами
+     * @param text текст, который обрабатываем
+     * @return обработанный текст
+     */
     public String replacePunctuationChars(String text) {
         String chars = "(\\.|,|:|;|\"|!|\\?|\\(|\\)|\n|\t|--|-\\s+|\\s+-|\\s+)";
-        this.clearText = text.replaceAll(chars, "  ").replaceAll("\\s{2,}", "  ");
-        return this.clearText;
+        return text.replaceAll(chars, "  ").replaceAll("\\s{2,}", "  ");
     }
 }

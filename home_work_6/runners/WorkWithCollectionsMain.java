@@ -1,7 +1,5 @@
 package home_work_6.runners;
 
-
-import home_work_6.ConvertTextToArray;
 import home_work_6.WorkWithCollections;
 import home_work_6.comparators.MapValueComparator;
 import home_work_6.dataStorage.TextFileDataSource;
@@ -15,8 +13,7 @@ public class WorkWithCollectionsMain {
         TextFileDataSource dataSource = new TextFileDataSource();
         String nameFile = "Война и мир_книга.txt";
         String strText = dataSource.loadData(nameFile);
-        ConvertTextToArray convertTextToArray = new ConvertTextToArray();
-        strText = convertTextToArray.replacePunctuationChars(strText);
+        strText = workWithCollections.replacePunctuationChars(strText);
 
         Set<String> uniqueWords = workWithCollections.setWords(strText);
         for (String uniqueWord : uniqueWords) {
