@@ -120,6 +120,7 @@ public class StudentMain {
         int numStudents = 0;
         int ageFrom = 0;
         int ageTo = 0;
+        int listNameSize = listName.size();
         System.out.println("Выберите, сколько студентов вы хотите создать: ");
         if (scanner.hasNextInt()) {
             numStudents = scanner.nextInt();
@@ -138,7 +139,7 @@ public class StudentMain {
             int age = rnd.nextInt(ageFrom, ageTo + 1);
             double averageScore = rnd.nextDouble(0, 10);
             boolean isOlimpiad = rnd.nextBoolean();
-            String name = randomString(listName);
+            String name = randomString(listName, listNameSize);
 
             listStudent.add(new Student(i + 1, name, age, averageScore, isOlimpiad));
         }
@@ -158,10 +159,10 @@ public class StudentMain {
     /**
      * Метод, который возвращает рандомное по номеру имя из листа listName
      * @param listName - переменная типа List<String> хранящая ссылку на объект типа ArrayList<String>
+     * @param listNameSize - размер listName
      * @return рандомное по номеру имя из listName типа String
      */
-    public static String randomString(List<String> listName) {
-        int listNameSize = listName.size();
+    public static String randomString(List<String> listName, int listNameSize) {
         int num = rnd.nextInt(0, listNameSize);
         return listName.get(num);
     }
