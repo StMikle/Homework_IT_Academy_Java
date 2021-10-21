@@ -16,27 +16,28 @@ public class SearchMain {
         String text = dataSource.loadData("Война и мир_книга.txt");
         ISearchEngine iSearchEngine;
 
-        String test = "Папа мама я - дрУжная Семья";
+
         System.out.println("Введите слово, которое вы хотите найти в тексте");
         String word = sc.next();
-        System.out.println("Использование метода search() класса EasySearch с учёта регистра");
+        System.out.println("Использование метода search() класса EasySearch с учётом регистра");
         iSearchEngine = new SearchEnginePunctuationNormalizer(new EasySearch());
-        long count = iSearchEngine.search(test, word);
+        long count = iSearchEngine.search(text, word);
         System.out.println("Слово: " + word + " Количество - " + count);
 
-        System.out.println("Использование метода search() класса RegExSearch с учёта регистра");
+        System.out.println("Использование метода search() класса RegExSearch с учётом регистра");
         iSearchEngine = new SearchEnginePunctuationNormalizer(new RegExSearch());
-        count = iSearchEngine.search(test, word);
+        count = iSearchEngine.search(text, word);
         System.out.println("Слово: " + word + " Количество - " + count);
 
-//        System.out.println("Использование метода search() класса EasySearch без учёта регистра");
-//        iSearchEngine = new SearchEngineCaseInsensitive(new EasySearch());
-//        count = iSearchEngine.search(test, word);
-//        System.out.println("Слово: " + word + " Количество - " + count);
-//
-//        System.out.println("Использование метода search() класса RegExSearch без учёта регистра");
-//        iSearchEngine = new SearchEngineCaseInsensitive(new RegExSearch());
-//        count = iSearchEngine.search(test, word);
-//        System.out.println("Слово: " + word + " Количество - " + count);
+        System.out.println("Использование метода search() класса EasySearch без учёта регистра");
+
+        iSearchEngine = new SearchEnginePunctuationNormalizer(new SearchEngineCaseInsensitive(new RegExSearch()));
+        count = iSearchEngine.search(text, word);
+        System.out.println("Слово: " + word + " Количество - " + count);
+
+        System.out.println("Использование метода search() класса RegExSearch без учёта регистра");
+        iSearchEngine = new SearchEnginePunctuationNormalizer(new SearchEngineCaseInsensitive(new RegExSearch()));
+        count = iSearchEngine.search(text, word);
+        System.out.println("Слово: " + word + " Количество - " + count);
     }
 }

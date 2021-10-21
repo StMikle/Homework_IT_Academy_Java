@@ -9,19 +9,18 @@ import java.util.*;
 public class WorkWithCollectionsMain {
 
     public static void main(String[] args) {
-        WorkWithCollections workWithCollections = new WorkWithCollections();
         TextFileDataSource dataSource = new TextFileDataSource();
         String nameFile = "Война и мир_книга.txt";
         String strText = dataSource.loadData(nameFile);
-        strText = workWithCollections.replacePunctuationChars(strText);
+        WorkWithCollections workWithCollections = new WorkWithCollections(strText);
 
-        Set<String> uniqueWords = workWithCollections.setWords(strText);
+        Set<String> uniqueWords = workWithCollections.setWords();
         for (String uniqueWord : uniqueWords) {
             System.out.println(uniqueWord);
         }
         System.out.println("Количество слов: " + uniqueWords.size());
 
-        Map<String, Long> mapTest = workWithCollections.mapWordsAndNumbers(strText);
+        Map<String, Long> mapTest = workWithCollections.mapWordsAndNumbers();
         List<Map.Entry<String, Long>> list = new ArrayList<>(mapTest.entrySet());
         MapValueComparator mapValueComparator = new MapValueComparator();
         list.sort(mapValueComparator);
@@ -33,8 +32,12 @@ public class WorkWithCollectionsMain {
             number = sc.nextInt();
         }
         System.out.println("Топ " + number + " слов");
-        for (int i = 0; i < number; i++) {
-            System.out.printf("Слово: %s  Количество: %s \n", list.get(i).getKey(), list.get(i).getValue());
+        for (Map.Entry<String, Long> stringLongEntry : list) {
+            System.out.printf("Слово: %s  Количество: %s \n", stringLongEntry.getKey(), stringLongEntry.getValue());
+            number--;
+            if (number == 0) {
+                break;
+            }
         }
     }
 }

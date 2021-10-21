@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public class RegExSearch implements ISearchEngine {
 
     /**
-     * Реализация метода интерфейса, который ищет слово в обработанном тексте с помощью регулярного выражения
+     * Реализация метода интерфейса, который ищет слово в обработанном тексте с помощью строки обработанной регулярным выражением
      * @param text текст в котором ищем
      * @param word слово, которое ищем
      * @return количество повторений слова
@@ -23,4 +23,5 @@ public class RegExSearch implements ISearchEngine {
         }
         return count;
     }
+
 }

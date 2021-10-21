@@ -3,38 +3,52 @@ package home_work_6;
 import java.util.*;
 
 public class WorkWithCollections {
+
     /**
-     * Метод, который заполняет коллекцию реализующую интерфейс Map<String, Long> словами из массива str,
+     * Поле типа String, которое хранит текст переданный в конструктор
+     */
+    private String text;
+
+    /**
+     * Конструктор, принимающий текст
+     * @param text - текст, который мы передаём в конструктор
+     */
+    public WorkWithCollections(String text) {
+        this.text = text;
+    }
+
+    /**
+     * Метод, который заполняет коллекцию реализующую интерфейс Map<String, Long> словами из text,
      * где ключ - слово типа String, значение - количество этих слов типа Long
-     * @param text строка с текстом
      * @return объект типа HashMap<String, Long>
      */
-    public Map<String, Long> mapWordsAndNumbers(String text) {
+    public Map<String, Long> mapWordsAndNumbers() {
         Map<String, Long> map = new HashMap<>();
+        this.text = replacePunctuationChars();
         String[] textArray = text.split("  ");
-        for (String s : textArray) {
-            if (map.containsKey(s)) {
-                long value = map.get(s);
-                map.put(s, ++value);
+        for (String word : textArray) {
+            if (map.containsKey(word)) {
+                Long value = map.get(word);
+                map.put(word, ++value);
             } else {
-                map.put(s, 1L);
+                map.put(word, 1L);
             }
         }
         return map;
     }
 
     /**
-     * Метод, который заполняет коллекцию реализующую интерфейс Set словами из массива str
-     * @param text массив слов типа String
+     * Метод, который заполняет коллекцию реализующую интерфейс Set словами из text
      * @return объект типа HashSet<String> содержащий уникальные слова
      */
-    public Set<String> setWords(String text) {
-        return new HashSet<String>(List.of(text.split("  ")));
+    public Set<String> setWords() {
+        this.text = replacePunctuationChars();
+        return new HashSet<>(List.of(text.split("  ")));
     }
 
-    public String replacePunctuationChars(String text) {
+    public String replacePunctuationChars() {
         String chars = "(\\.|,|:|;|\"|!|\\?|\\(|\\)|\n|\t|--|-\\s+|\\s+-|\\s+)";
-        text = text.replaceAll(chars, "  ").replaceAll("\\s{2,}", "  ");
+        this.text = text.replaceAll(chars, "  ").replaceAll("\\s{2,}", "  ");
         return text;
     }
 }

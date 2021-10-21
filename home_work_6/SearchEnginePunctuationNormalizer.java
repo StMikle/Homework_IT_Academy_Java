@@ -26,11 +26,8 @@ public class SearchEnginePunctuationNormalizer implements ISearchEngine {
      */
     @Override
     public long search(String text, String word) {
-        if (this.iSearchEngine instanceof EasySearch) {
-            return iSearchEngine.search(text, word);                            // проверка для того, чтобы он не использовал
-        }                                                                       // метод с регулярными выражениями в EasySearch
-
-        return iSearchEngine.search(replacePunctuationChars(text), word);
+        text = replacePunctuationChars(text);
+        return this.iSearchEngine.search(text, word);
     }
 
     /**

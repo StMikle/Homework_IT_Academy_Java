@@ -4,6 +4,8 @@ import home_work_6.api.ISearchEngine;
 
 public class EasySearch implements ISearchEngine {
 
+    private final char[] stopChars = ",. ;:'\")(?!\n\t".toCharArray();
+
     /**
      * Реализация метода интерфейса, который ищет слово в тексте, не применяя регулярные выражения
      * @param text текст в котором ищем
@@ -13,7 +15,7 @@ public class EasySearch implements ISearchEngine {
     @Override
     public long search(String text, String word) {
         long count = 0;
-        int indx = 0;
+        int indx = -1;
 
         do {
             indx = text.indexOf(word, indx);
@@ -34,11 +36,11 @@ public class EasySearch implements ISearchEngine {
      * @return true - если границы слова это - символы-разделители
      *          false - если не подходит под условие
      */
-    public static boolean chek(String text, String word, int indx) {
+    private boolean chek(String text, String word, int indx) {
         int lengthWord = word.length();
-        char[] chars = ",. ;:'\")(?!\n\t".toCharArray();
         boolean chekFirst = false;
         boolean chekLast = false;
+
          if (indx == 0) {
             chekFirst = true;
         }
@@ -46,7 +48,7 @@ public class EasySearch implements ISearchEngine {
             chekLast = true;
         }
 
-        for (char aChar : chars) {
+        for (char aChar : this.stopChars) {
             if (!chekFirst && text.charAt(indx - 1) == aChar) {
                 chekFirst = true;
             }

@@ -26,7 +26,6 @@ public class SearchEngineCaseInsensitive implements ISearchEngine {
      */
     @Override
     public long search(String text, String word) {
-        return iSearchEngine.search(text.toLowerCase(), text.toLowerCase());
+        return iSearchEngine.search(text.toLowerCase(), word.toLowerCase());
     }
-
 }
