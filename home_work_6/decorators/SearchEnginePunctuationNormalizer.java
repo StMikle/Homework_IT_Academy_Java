@@ -1,5 +1,6 @@
-package home_work_6;
+package home_work_6.decorators;
 
+import home_work_6.utils.RegExSearch;
 import home_work_6.api.ISearchEngine;
 
 public class SearchEnginePunctuationNormalizer implements ISearchEngine {
@@ -19,14 +20,16 @@ public class SearchEnginePunctuationNormalizer implements ISearchEngine {
 
     /**
      * Метод, который присваивает результат выполнения метода search()
-     * класса Search переданного в конструктор полю result и возвращает значение этого поля
+     * класса Search переданного в конструктор
      * @param text - переданный текст
      * @param word - слово, которое ищем
      * @return количество найденных слов типа long
      */
     @Override
     public long search(String text, String word) {
-        text = replacePunctuationChars(text);
+        if (iSearchEngine instanceof RegExSearch) {
+            text = replacePunctuationChars(text);
+        }
         return this.iSearchEngine.search(text, word);
     }
 

@@ -1,4 +1,4 @@
-package home_work_6;
+package home_work_6.utils;
 
 import home_work_6.api.ISearchEngine;
 

@@ -1,9 +1,12 @@
-package home_work_6;
+package home_work_6.utils;
 
 import home_work_6.api.ISearchEngine;
 
 public class EasySearch implements ISearchEngine {
 
+    /**
+     * Поле типа char[], которое хранит массив символов-разделителей
+     */
     private final char[] stopChars = ",. ;:'\")(?!\n\t".toCharArray();
 
     /**

@@ -1,9 +1,9 @@
 package home_work_6.runners;
 
-import home_work_6.EasySearch;
-import home_work_6.RegExSearch;
-import home_work_6.SearchEngineCaseInsensitive;
-import home_work_6.SearchEnginePunctuationNormalizer;
+import home_work_6.utils.EasySearch;
+import home_work_6.utils.RegExSearch;
+import home_work_6.decorators.SearchEngineCaseInsensitive;
+import home_work_6.decorators.SearchEnginePunctuationNormalizer;
 import home_work_6.api.ISearchEngine;
 import home_work_6.dataStorage.TextFileDataSource;
 
@@ -30,14 +30,37 @@ public class SearchMain {
         System.out.println("Слово: " + word + " Количество - " + count);
 
         System.out.println("Использование метода search() класса EasySearch без учёта регистра");
-
-        iSearchEngine = new SearchEnginePunctuationNormalizer(new SearchEngineCaseInsensitive(new RegExSearch()));
+        iSearchEngine = new SearchEngineCaseInsensitive(new SearchEnginePunctuationNormalizer(new EasySearch()));
         count = iSearchEngine.search(text, word);
         System.out.println("Слово: " + word + " Количество - " + count);
 
         System.out.println("Использование метода search() класса RegExSearch без учёта регистра");
-        iSearchEngine = new SearchEnginePunctuationNormalizer(new SearchEngineCaseInsensitive(new RegExSearch()));
+        iSearchEngine = new SearchEngineCaseInsensitive(new SearchEnginePunctuationNormalizer(new RegExSearch()));
         count = iSearchEngine.search(text, word);
         System.out.println("Слово: " + word + " Количество - " + count);
+
+
+
+//        5. Используя реализации интерфейса ISearchEngine вывести информацию как часто встречаются слова:
+//        "война", "и" (как союз), "мир" вне зависимости от регистра.
+        System.out.println("\nПоиск слов \"война\", \"и\" (как союз), \"мир\" без учёта регистра:\n");
+        System.out.println("Использование метода search() класса EasySearch без учёта регистра");
+        iSearchEngine = new SearchEngineCaseInsensitive(new SearchEnginePunctuationNormalizer(new EasySearch()));
+        count = iSearchEngine.search(text, "война");
+        System.out.println("Слово: " + word + " Количество - " + count);
+        count = iSearchEngine.search(text, "и");
+        System.out.println("Слово: " + word + " Количество - " + count);
+        count = iSearchEngine.search(text, "мир");
+        System.out.println("Слово: " + word + " Количество - " + count);
+
+        System.out.println("Использование метода search() класса RegExSearch без учёта регистра");
+        iSearchEngine = new SearchEngineCaseInsensitive(new SearchEnginePunctuationNormalizer(new RegExSearch()));
+        count = iSearchEngine.search(text, "война");
+        System.out.println("Слово: " + word + " Количество - " + count);
+        count = iSearchEngine.search(text, "и");
+        System.out.println("Слово: " + word + " Количество - " + count);
+        count = iSearchEngine.search(text, "мир");
+        System.out.println("Слово: " + word + " Количество - " + count);
+
     }
 }

@@ -1,4 +1,4 @@
-package home_work_6;
+package home_work_6.decorators;
 
 import home_work_6.api.ISearchEngine;
 
@@ -18,8 +18,8 @@ public class SearchEngineCaseInsensitive implements ISearchEngine {
     }
 
     /**
-     * Метод, который присваивает результат выполнения метода search()
-     * класса Search переданного в конструктор полю result и возвращает значение этого поля
+     * Метод, который приводит текст и слово к нижнему регистру и передаёт их методу search()
+     * класса Search переданного в конструктор полю iSearchEngine
      * @param text - переданный текст
      * @param word - слово, которое ищем
      * @return количество найденных слов типа long

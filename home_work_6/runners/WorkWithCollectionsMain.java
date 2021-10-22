@@ -1,6 +1,6 @@
 package home_work_6.runners;
 
-import home_work_6.WorkWithCollections;
+import home_work_6.utils.WorkWithCollections;
 import home_work_6.comparators.MapValueComparator;
 import home_work_6.dataStorage.TextFileDataSource;
 
