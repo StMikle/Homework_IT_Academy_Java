@@ -1,15 +1,15 @@
 package home_work_6.runners;
 
+import home_work_6.utils.TextFileToString;
 import home_work_6.utils.WorkWithCollections;
 import home_work_6.comparators.MapValueComparator;
-import home_work_6.dataStorage.TextFileDataSource;
 
 import java.util.*;
 
 public class WorkWithCollectionsMain {
 
     public static void main(String[] args) {
-        TextFileDataSource dataSource = new TextFileDataSource();
+        TextFileToString dataSource = new TextFileToString();
         String nameFile = "Война и мир_книга.txt";
         String strText = dataSource.loadData(nameFile);
         WorkWithCollections workWithCollections = new WorkWithCollections(strText);
