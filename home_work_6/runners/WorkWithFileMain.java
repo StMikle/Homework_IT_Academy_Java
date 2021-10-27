@@ -63,6 +63,7 @@ public class WorkWithFileMain {
         do {
             System.out.println("Введите имя файла с книгами:");
             nameFile = scanner.nextLine();
+            nameFile = "./src/home_work_6/" + nameFile;
             file = new File(nameFile);
             if (!file.exists()) {
                 System.out.println("Неправильное имя файла !!!");
