@@ -10,7 +10,7 @@ public class WorkWithCollectionsMain {
 
     public static void main(String[] args) {
         TextFileToString dataSource = new TextFileToString();
-        String nameFile = "Война и мир_книга.txt";
+        String nameFile = "./src/home_work_6/Война и мир_книга.txt";
         String strText = dataSource.loadData(nameFile);
         WorkWithCollections workWithCollections = new WorkWithCollections(strText);
 

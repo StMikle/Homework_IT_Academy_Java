@@ -13,7 +13,7 @@ public class SearchMain {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         TextFileToString dataSource = new TextFileToString();
-        String text = dataSource.loadData("Война и мир_книга.txt");
+        String text = dataSource.loadData("./src/home_work_6/Война и мир_книга.txt");
         ISearchEngine iSearchEngine;
 
         System.out.println("Введите слово, которое вы хотите найти в тексте");
