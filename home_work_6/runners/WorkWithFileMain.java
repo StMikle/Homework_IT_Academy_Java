@@ -6,8 +6,6 @@ import home_work_6.utils.RegExSearch;
 import home_work_6.utils.TextFileToString;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class WorkWithFileMain {
@@ -16,35 +14,35 @@ public class WorkWithFileMain {
 
     public static void main(String[] args) {
 
-        // выбор названия файла с книгами
-        String nameFile = choiceNameOfBookFile();
+        // выбор пути к файлу с книгами
+        File directory = choiceDirectoryPathOfBookFile();
         // вывод списка книг в этом файле
-        outNameOfBooks(nameFile);
+        outNameOfBooks(directory);
 
         // выбор названия книги с которой будем работать
-        String nameBook = choiceNameBook(nameFile);
+        String nameBook = choiceNameBook(directory);
 
         // перевод текста из файла в строку
-        String textBook = textToString(nameFile, nameBook);
+        String textBook = textToString(directory, nameBook);
         // вывод текста из файла
         System.out.println(textBook);
 
         // поиск текста в книге
-        searchText(nameFile, nameBook, textBook);
+        searchText(directory, nameBook, textBook);
 
         // вывод файла result.txt с информацией о найденных словах
-        String textResult = textToString(nameFile, "result.txt");
+        String textResult = textToString(directory, "result.txt");
         System.out.println("\nВывод информации о найденных словах:");
         System.out.println(textResult);
     }
 
     /**
      * Метод, для записи в файл result.txt результаты поиска слов в книгах
-     * @param nameFile - название файла с книгами
+     * @param directory - объект типа File c книгами
      * @param text - текст, который будем записывать в файл
      */
-    public static void writeToFile(String nameFile, String text) {
-        try (FileWriter fileWriter = new FileWriter(nameFile + "//result.txt", true)){
+    public static void writeToFile(File directory, String text) {
+        try (FileWriter fileWriter = new FileWriter(directory + "//result.txt", true)){
             fileWriter.write(text);
             fileWriter.append('\n');
         } catch (IOException e) {
@@ -53,39 +51,38 @@ public class WorkWithFileMain {
     }
 
     /**
-     * Метод, для выбора названия файла с книгами
-     * и проверка на правильность введённого названия файла
-     * @return название файла с книгами типа String
+     * Метод, для задания пути к файлу с книгами
+     * и проверка на правильность введённого названия пути к этому файлу
+     * @return название пути к файлу с книгами типа String
      */
-    public static String choiceNameOfBookFile() {
+    public static File choiceDirectoryPathOfBookFile() {
         String nameFile;
         File file;
         do {
-            System.out.println("Введите имя файла с книгами:");
+            System.out.println("Введите путь к файлу с книгами:");
             nameFile = scanner.nextLine();
-            nameFile = "./src/home_work_6/" + nameFile;
             file = new File(nameFile);
             if (!file.exists()) {
-                System.out.println("Неправильное имя файла !!!");
+                System.out.println("Неправильное путь к файлу!!!");
             }
         } while (!file.exists());
-        return nameFile;
+        return file;
     }
 
     /**
      * Метод, для выбора названия файла с текстом книги
      * и проверка на правильность введённого названия файла
      *
-     * @param nameFile - название файла с книгами
+     * @param directory - объект типа File c книгами
      * @return название файла с текстом книги типа String
      */
-    public static String choiceNameBook(String nameFile) {
+    public static String choiceNameBook(File directory) {
         String nameBook;
         File file;
         do {
             System.out.print("\nВыберите имя книги, с которой вы хотите работать: ");
             nameBook = scanner.nextLine();
-            file = new File(nameFile + "//" + nameBook);
+            file = new File(directory + "//" + nameBook);
             if (!file.exists()) {
                 System.out.println("Неправильное имя файла !!!");
             }
@@ -95,35 +92,33 @@ public class WorkWithFileMain {
 
     /**
      * Метод, который переводит текст книги в строку
-     * @param nameFile - название файла с книгами
+     * @param directory - объект типа File c книгами
      * @param nameBook - название файла с текстом книги
      * @return строку содержащую текст книги
      */
-    public static String textToString(String nameFile, String nameBook) {
+    public static String textToString(File directory, String nameBook) {
         TextFileToString textFileToString = new TextFileToString();
-        return textFileToString.loadData(nameFile + "//" + nameBook);
+        return textFileToString.loadData(directory + "//" + nameBook);
     }
 
     /**
      * Метод, который выводит список файлов с книгами
-     * @param nameFile - название файла с книгами
+     * @param directory - объект типа File c книгами
      */
-    public static void outNameOfBooks(String nameFile) {
-        File dir = new File(nameFile);
-        File[] arrFiles = dir.listFiles();
-        List<File> listFiles = Arrays.asList(arrFiles);
-        for (File listFile : listFiles) {
-            System.out.println(listFile.getName());
+    public static void outNameOfBooks(File directory) {
+        File[] arrFiles = directory.listFiles();
+        for (File arrFile : arrFiles) {
+            System.out.println(arrFile.getName());
         }
     }
 
     /**
      * Метод, который ищет нужный пользователю текст в книге, пока не надоест
-     * @param nameFile - название файла с книгами
+     * @param directory - объект типа File c книгами
      * @param nameBook - название файла с текстом книги
      * @param textBook - текст книги
      */
-    public static void searchText(String nameFile, String nameBook, String textBook) {
+    public static void searchText(File directory, String nameBook, String textBook) {
         String searchText;
         do {
             System.out.print("\nВыберите текст, который хотите найти в тексте." +
@@ -134,16 +129,16 @@ public class WorkWithFileMain {
             if (searchText.equals("exit")) {
                 break;
             } else if (searchText.equals("new file")) {
-                outNameOfBooks(nameFile);
-                nameBook = choiceNameBook(nameFile);
-                textBook = textToString(nameFile, nameBook);
+                outNameOfBooks(directory);
+                nameBook = choiceNameBook(directory);
+                textBook = textToString(directory, nameBook);
                 System.out.println(textBook);
                 continue;
             }
             ISearchEngine iSearchEngine = new SearchEnginePunctuationNormalizer(new RegExSearch());
             long count = iSearchEngine.search(textBook, searchText);
             String text = "Имя файла: " + nameBook + "  |  Текст: " + searchText + "  |  Количество раз: " + count;
-            writeToFile(nameFile, text);
+            writeToFile(directory, text);
         } while (true);
     }
 }
