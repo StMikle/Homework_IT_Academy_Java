@@ -3,7 +3,7 @@ package home_work_6.utils;
 public class ResultContainer {
     private int result;
 
-    public int getResult() {
+    public int  getResult() {
         return result;
     }
 

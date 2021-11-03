@@ -49,8 +49,6 @@ public class ThreadWorkWithFileMain {
                     executorService.submit(new SearchWordInTextWithLockAndLatch(engine, textBook, nameBook, directoryPath,
                             searchText, container, lock, latch));
                 }
-                System.out.println("Результат: " + container.getResult());
-                container.setResult(0);
             }
         } while (true);
 

@@ -14,7 +14,7 @@ public class TextFileDataSource {
      * @param data - переменная типа List<String> хранящая ссылку на объект типа ArrayList<String>
      */
     public void loadData(String filename, List<String> data) {
-        try (BufferedReader src = new BufferedReader(new FileReader(filename))) {
+            try (BufferedReader src = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = src.readLine()) != null) {
                 data.add(line);
