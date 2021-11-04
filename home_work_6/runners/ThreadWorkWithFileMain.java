@@ -60,7 +60,7 @@ public class ThreadWorkWithFileMain {
         System.out.println("Время выполнения: " + (finishTime - startTime));
 
         // вывод файла result.txt с информацией о найденных словах
-        String textResult = textToString("D:/Homework IT-Academy(Java)/src/home_work_6/books/threadResult.txt");
+        String textResult = textToString(directoryPath + "/threadResult.txt");
         System.out.println("\nВывод информации о найденных словах:");
         System.out.println(textResult);
     }
