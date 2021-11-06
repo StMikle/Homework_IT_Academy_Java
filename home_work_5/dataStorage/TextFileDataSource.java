@@ -6,6 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Утильный класс с методом loadData() для чтения имён из файла
+ * и добавления их в коллекцию
+ */
 public class TextFileDataSource {
 
     /**

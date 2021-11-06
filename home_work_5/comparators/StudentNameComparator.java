@@ -4,6 +4,9 @@ import home_work_5.dto.Student;
 
 import java.util.Comparator;
 
+/**
+ * Класс - компаратор для сортировки поля имени (name) класса Student по возрастанию
+ */
 public class StudentNameComparator implements Comparator<Student> {
 
     /**

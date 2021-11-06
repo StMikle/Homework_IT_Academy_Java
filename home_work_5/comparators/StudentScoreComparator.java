@@ -5,6 +5,10 @@ import home_work_5.dto.Student;
 
 import java.util.Comparator;
 
+/**
+ * Класс - компаратор для сортировки поля средней оценки (averageScore)
+ * класса Student по возрастанию
+ */
 public class StudentScoreComparator implements Comparator<Student> {
 
     /**

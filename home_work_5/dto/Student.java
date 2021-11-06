@@ -1,11 +1,14 @@
 package home_work_5.dto;
 
+/**
+ * DTO - класс студентов, который хранит информацию о студентах
+ */
 public class Student {
 
     /**
-     * Поле типа int для порядкового номера
+     * Поле типа long для порядкового номера
      */
-    private int id;
+    private long id;
 
     /**
      * Поле типа String для имён
@@ -35,7 +38,7 @@ public class Student {
      * @param averageScore - средняя оценка типа double
      * @param olimpic - олимпиадник или нет типа boolean
      */
-    public Student(int id, String name, int age, double averageScore, boolean olimpic) {
+    public Student(long id, String name, int age, double averageScore, boolean olimpic) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -44,18 +47,24 @@ public class Student {
     }
 
     /**
-     * Метод (getter)
-     * @return поле id типа int
+     * Дефолтный конструктор без параметров
      */
-    public int getId() {
+    public Student() {
+    }
+
+    /**
+     * Метод (getter)
+     * @return поле id типа long
+     */
+    public long getId() {
         return id;
     }
 
     /**
      * Метод (setter)
-     * @param id - переданный аргумент типа int
+     * @param id - переданный аргумент типа long
      */
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -103,7 +112,7 @@ public class Student {
      * Метод (setter)
      * @param score - переданный аргумент типа double
      */
-    public void setScore(double score) {
+    public void setAverageScore(double score) {
         this.averageScore = score;
     }
 
